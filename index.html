@@ -1,0 +1,1723 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jamaica's 18th — A Night to Remember</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Lato:wght@300;400;700&family=Great+Vibes&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;overflow-x:hidden;max-width:100vw}
+:root{
+  --plum:#0D0618;--deep:#150925;--violet:#4B0082;--mid:#7B2FBE;
+  --lavender:#C8A4D4;--gold:#D4AF37;--gold2:#F5E070;--cream:#F8F0FF;--text:#D4C8E8;
+}
+body{background:var(--plum);font-family:'Lato',sans-serif;color:var(--text);overflow-x:hidden;max-width:100vw;padding:0;}
+#magic-bg{position:fixed;inset:0;z-index:0;overflow:hidden;pointer-events:none}
+.aurora{position:absolute;border-radius:50%;filter:blur(90px);opacity:.38;animation:drift ease-in-out infinite}
+.a1{width:700px;height:500px;top:-120px;left:-180px;background:radial-gradient(circle,#6B00CC,#3D006E 60%,transparent);animation-duration:14s}
+.a2{width:600px;height:600px;top:25%;right:-160px;background:radial-gradient(circle,#9B1FE8,#5B008A 60%,transparent);animation-duration:18s;animation-delay:-6s}
+.a3{width:800px;height:400px;bottom:-120px;left:15%;background:radial-gradient(circle,#4B0082,#8B00CC 50%,transparent);animation-duration:22s;animation-delay:-11s}
+.a4{width:500px;height:500px;top:45%;left:35%;background:radial-gradient(circle,rgba(212,175,55,.15),rgba(184,134,11,.06) 60%,transparent);filter:blur(70px);opacity:.7;animation-duration:16s;animation-delay:-4s}
+@keyframes drift{0%{transform:translate(0,0) scale(1)}33%{transform:translate(40px,-35px) scale(1.08)}66%{transform:translate(-28px,22px) scale(.94)}100%{transform:translate(0,0) scale(1)}}
+#stars{position:absolute;inset:0}
+.star{position:absolute;border-radius:50%;background:#fff;animation:twinkle ease-in-out infinite}
+@keyframes twinkle{0%,100%{opacity:.08;transform:scale(.6)}50%{opacity:1;transform:scale(1.3)}}
+#sparkles{position:absolute;inset:0}
+.sparkle{position:absolute;width:5px;height:5px;background:var(--gold2);opacity:0;clip-path:polygon(50% 0%,61% 35%,98% 35%,68% 57%,79% 91%,50% 70%,21% 91%,32% 57%,2% 35%,39% 35%);animation:floatUp linear infinite}
+@keyframes floatUp{0%{transform:translateY(100vh) rotate(0deg) scale(0);opacity:0}8%{opacity:.9}88%{opacity:.35}100%{transform:translateY(-8vh) rotate(400deg) scale(1.4);opacity:0}}
+
+/* FAIRYTALE OVERLAY */
+#fairytale-overlay{position:fixed;inset:0;z-index:150;pointer-events:none;opacity:0}
+#fairytale-overlay.active{opacity:1}
+#portal{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%) scale(0);width:min(560px,90vw);height:min(560px,90vw);border-radius:50%;border:3px solid rgba(212,175,55,0)}
+#portal.burst{animation:portalBurst 1.8s cubic-bezier(.22,1,.36,1) forwards}
+@keyframes portalBurst{0%{transform:translate(-50%,-50%) scale(0);border-color:rgba(212,175,55,.9);box-shadow:0 0 40px rgba(212,175,55,.6),inset 0 0 60px rgba(200,164,212,.3)}30%{transform:translate(-50%,-50%) scale(1.1);border-color:rgba(212,175,55,.7);box-shadow:0 0 80px rgba(212,175,55,.5),0 0 120px 40px rgba(212,175,55,.15)}60%{transform:translate(-50%,-50%) scale(1.4);border-color:rgba(212,175,55,.35)}100%{transform:translate(-50%,-50%) scale(2.2);border-color:rgba(212,175,55,0);box-shadow:0 0 0 transparent}}
+#portal-glow{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%) scale(0);width:min(320px,60vw);height:min(320px,60vw);border-radius:50%;background:radial-gradient(circle,rgba(245,224,112,.22) 0%,rgba(200,164,212,.12) 40%,transparent 70%);filter:blur(20px)}
+#portal-glow.burst{animation:glowPulse 2s ease-out forwards}
+@keyframes glowPulse{0%{transform:translate(-50%,-50%) scale(0);opacity:0}20%{transform:translate(-50%,-50%) scale(1);opacity:1}60%{transform:translate(-50%,-50%) scale(1.6);opacity:.7}100%{transform:translate(-50%,-50%) scale(2.5);opacity:0}}
+#flash{position:absolute;inset:0;background:radial-gradient(circle at 50% 50%,rgba(245,224,112,.18) 0%,rgba(200,164,212,.08) 40%,transparent 70%);opacity:0}
+#flash.burst{animation:flashOut 1.2s ease-out forwards}
+@keyframes flashOut{0%{opacity:0}15%{opacity:1}100%{opacity:0}}
+.petal{position:absolute;left:50%;top:50%;border-radius:50% 50% 50% 50% / 70% 70% 30% 30%;opacity:0;transform-origin:center bottom}
+.petal.burst{animation:petalFly var(--dur,1.4s) var(--delay,0s) cubic-bezier(.2,.8,.4,1) forwards}
+@keyframes petalFly{0%{opacity:0;transform:translate(-50%,-50%) rotate(var(--rot)) translateY(0) scale(0)}15%{opacity:1}80%{opacity:.7}100%{opacity:0;transform:translate(-50%,-50%) rotate(var(--rot)) translateY(var(--dist,-220px)) scale(.4) rotate(var(--spin,180deg))}}
+.starburst{position:absolute;left:50%;top:50%;clip-path:polygon(50% 0%,61% 35%,98% 35%,68% 57%,79% 91%,50% 70%,21% 91%,32% 57%,2% 35%,39% 35%);opacity:0;transform-origin:center}
+.starburst.burst{animation:starFly var(--dur,1.2s) var(--delay,0s) ease-out forwards}
+@keyframes starFly{0%{opacity:0;transform:translate(-50%,-50%) translate(var(--tx,0px),var(--ty,0px)) scale(0)}10%{opacity:1;transform:translate(-50%,-50%) translate(calc(var(--tx)*0.1),calc(var(--ty)*0.1)) scale(1.4)}100%{opacity:0;transform:translate(-50%,-50%) translate(var(--tx),var(--ty)) scale(0.2)}}
+.fdust{position:absolute;border-radius:50%;opacity:0;animation:dustFloat var(--dur,2s) var(--delay,0s) ease-out forwards}
+@keyframes dustFloat{0%{opacity:0;transform:translate(0,0) scale(0)}20%{opacity:1;transform:translate(var(--mx,0px),var(--my,0px)) scale(1)}100%{opacity:0;transform:translate(calc(var(--mx)*1.5),calc(var(--my)*1.5 - 60px)) scale(.3)}}
+.ribbon{position:absolute;left:50%;top:50%;width:3px;border-radius:2px;opacity:0;transform-origin:center top}
+.ribbon.burst{animation:ribbonFly var(--dur,1.6s) var(--delay,0s) cubic-bezier(.25,.46,.45,.94) forwards}
+@keyframes ribbonFly{0%{opacity:0;transform:translate(-50%,-50%) rotate(var(--rot,0deg)) scaleY(0)}15%{opacity:.9;transform:translate(-50%,-50%) rotate(var(--rot,0deg)) scaleY(1) translateY(0)}100%{opacity:0;transform:translate(-50%,-50%) rotate(calc(var(--rot,0deg) + var(--twist,20deg))) scaleY(1) translateY(var(--dist,-300px))}}
+#magic-words{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);text-align:center;pointer-events:none;opacity:0;white-space:nowrap}
+#magic-words.show{animation:wordsReveal 2.5s 0.3s ease-out forwards}
+@keyframes wordsReveal{0%{opacity:0;transform:translate(-50%,-50%) scale(.5)}20%{opacity:1;transform:translate(-50%,-50%) scale(1.08)}40%{transform:translate(-50%,-50%) scale(1)}80%{opacity:1}100%{opacity:0;transform:translate(-50%,-50%) scale(1.3)}}
+.mw-script{font-family:'Great Vibes',cursive;font-size:clamp(38px,8vw,60px);color:var(--gold2);text-shadow:0 0 30px rgba(212,175,55,.8),0 0 60px rgba(212,175,55,.4);display:block;line-height:1.1}
+.mw-sub{font-size:11px;letter-spacing:5px;text-transform:uppercase;color:var(--lavender);display:block;margin-top:8px}
+
+/* INTRO */
+#intro{position:fixed;inset:0;z-index:200;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:28px;transition:opacity .7s ease,transform .7s ease}
+#intro.hide{opacity:0;transform:translateY(-40px);pointer-events:none}
+.intro-label{font-size:10px;letter-spacing:6px;text-transform:uppercase;color:var(--gold);opacity:.8;animation:fadeUp .8s .3s both}
+.intro-title{font-family:'Great Vibes',cursive;font-size:clamp(28px,7vw,46px);color:var(--cream);text-align:center;text-shadow:0 0 40px rgba(200,164,212,.4);animation:fadeUp .8s .5s both}
+#env-container{position:relative;width:clamp(300px,75vw,460px);cursor:pointer;filter:drop-shadow(0 20px 60px rgba(75,0,130,.55));transition:filter .3s,transform .3s;animation:fadeUp .9s .7s both;perspective:900px}
+#env-container:hover{filter:drop-shadow(0 26px 72px rgba(212,175,55,.4));transform:translateY(-5px) scale(1.01)}
+#flap-group{transform-origin:50% 0%;transform-box:fill-box;transform-style:preserve-3d;transition:transform .9s cubic-bezier(.4,0,.2,1)}
+#env-container.opened #flap-group{transform:rotateX(-172deg)}
+#seal-wrap{position:absolute;left:50%;top:50%;transform:translate(-50%,-52%);width:68px;height:68px;z-index:10;pointer-events:none;transition:opacity .25s .05s,transform .25s}
+#env-container.opened #seal-wrap{opacity:0;transform:translate(-50%,-50%) scale(.3)}
+.seal-circle{width:68px;height:68px;border-radius:50%;background:radial-gradient(circle at 38% 32%,#F7E06B,var(--gold) 55%,#7A5500);box-shadow:0 4px 22px rgba(212,175,55,.65),inset 0 -3px 8px rgba(0,0,0,.3);display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-weight:700;font-size:20px;color:#0D0618;letter-spacing:-1px}
+.env-hint{font-size:10px;letter-spacing:4px;text-transform:uppercase;color:var(--lavender);animation:pulse 2.4s ease-in-out infinite,fadeUp .8s .9s both}
+@keyframes pulse{0%,100%{opacity:.3}50%{opacity:.8}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+
+/* SITE */
+#site{position:relative;z-index:1;opacity:0;transform:translateY(30px);pointer-events:none;transition:opacity .9s .2s ease,transform .9s .2s ease;overflow-x:hidden;width:100%}
+#site.show{opacity:1;transform:translateY(0);pointer-events:all}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:center;padding:18px 48px;background:linear-gradient(to bottom,rgba(13,6,24,.92),transparent);backdrop-filter:blur(14px);border-bottom:1px solid rgba(212,175,55,.1);opacity:0;transition:opacity .6s .8s}
+#site.show nav{opacity:1}
+.nav-logo{font-family:'Great Vibes',cursive;font-size:26px;color:var(--gold);text-shadow:0 0 20px rgba(212,175,55,.4);position:absolute;left:48px}
+.nav-links{display:flex;gap:32px;list-style:none}
+.nav-links a{font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--lavender);text-decoration:none;transition:color .2s}
+.nav-links a:hover{color:var(--gold)}
+.nav-cta{background:linear-gradient(135deg,var(--gold2),var(--gold));color:var(--plum);font-size:10px;letter-spacing:2px;font-weight:700;text-transform:uppercase;padding:10px 22px;border-radius:30px;border:none;cursor:pointer;box-shadow:0 4px 20px rgba(212,175,55,.3);transition:transform .2s,box-shadow .2s;position:absolute;right:48px}
+.nav-cta:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(212,175,55,.5)}
+
+#hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:120px 48px 80px;background-image:url('./assets/hero.png');background-size:cover;background-position:center center;background-attachment:fixed;background-repeat:no-repeat;position:relative}
+#hero::before{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(13,6,24,.58) 0%,rgba(13,6,24,.42) 35%,rgba(13,6,24,.64) 100%);z-index:0;pointer-events:none}
+#hero > *{position:relative;z-index:1}
+.h-top,.h-body{text-align:center}
+.h-ey{font-size:10px;letter-spacing:6px;text-transform:uppercase;color:var(--gold);margin-bottom:16px;animation:fadeUp .7s .1s both}
+.h-script{font-family:'Great Vibes',cursive;font-size:clamp(50px,12vw,86px);color:var(--cream);line-height:1;text-shadow:0 0 60px rgba(200,164,212,.35);animation:fadeUp .8s .25s both}
+.h-18{font-family:'Playfair Display',serif;font-weight:700;font-size:clamp(120px,30vw,220px);line-height:.8;letter-spacing:-8px;display:block;color:transparent;-webkit-text-stroke:2px var(--gold);background:linear-gradient(135deg,var(--gold2) 0%,var(--gold) 45%,rgba(212,175,55,.15) 100%);-webkit-background-clip:text;background-clip:text;filter:drop-shadow(0 0 38px rgba(212,175,55,.2));animation:fadeUp .9s .4s both}
+.h-sub{font-family:'Playfair Display',serif;font-style:italic;font-size:clamp(13px,3vw,19px);color:var(--lavender);letter-spacing:3px;margin-top:10px;animation:fadeUp .7s .55s both}
+.hdiv{display:flex;align-items:center;gap:14px;margin:26px auto;max-width:300px;animation:fadeUp .7s .75s both}
+.hdl{flex:1;height:1px}.hdl.l{background:linear-gradient(90deg,transparent,rgba(212,175,55,.5))}.hdl.r{background:linear-gradient(90deg,rgba(212,175,55,.5),transparent)}
+.hgem{width:8px;height:8px;background:var(--gold);transform:rotate(45deg);box-shadow:0 0 10px var(--gold)}
+.h-btns{display:flex;gap:14px;flex-wrap:wrap;justify-content:center;animation:fadeUp .7s .85s both}
+.btn-p{background:linear-gradient(135deg,var(--gold2),var(--gold) 60%,#8B6914);color:var(--plum);font-size:11px;letter-spacing:3px;font-weight:700;text-transform:uppercase;padding:16px 36px;border-radius:40px;border:none;cursor:pointer;box-shadow:0 8px 32px rgba(212,175,55,.35);transition:transform .2s,box-shadow .2s}
+.btn-p:hover{transform:translateY(-3px);box-shadow:0 14px 40px rgba(212,175,55,.55)}
+.btn-o{background:transparent;color:var(--lavender);font-size:11px;letter-spacing:3px;font-weight:700;text-transform:uppercase;padding:16px 36px;border-radius:40px;border:1px solid rgba(200,164,212,.3);cursor:pointer;transition:border-color .2s,color .2s}
+.btn-o:hover{border-color:var(--gold);color:var(--gold)}
+.scroll-hint{margin-top:52px;display:flex;flex-direction:column;align-items:center;gap:8px;font-size:9px;letter-spacing:3px;text-transform:uppercase;color:rgba(200,164,212,.35);animation:bounce 2.2s ease-in-out infinite}
+.sarrow{width:1px;height:38px;background:linear-gradient(to bottom,rgba(212,175,55,.5),transparent)}
+@keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(7px)}}
+
+#countdown{padding:80px 48px;text-align:center;background:linear-gradient(to bottom,transparent,rgba(75,0,130,.12),transparent);border-top:1px solid rgba(212,175,55,.08);border-bottom:1px solid rgba(212,175,55,.08)}
+.sec-label{font-size:9px;letter-spacing:5px;text-transform:uppercase;color:var(--gold);margin-bottom:28px}
+.cd-grid{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+.cd-box{background:rgba(255,255,255,.04);border:1px solid rgba(212,175,55,.18);border-radius:14px;padding:22px 28px;min-width:90px;backdrop-filter:blur(10px)}
+.cd-num{font-family:'Playfair Display',serif;font-weight:700;font-size:44px;line-height:1;background:linear-gradient(135deg,var(--gold2),var(--gold));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.cd-unit{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--lavender);margin-top:6px}
+
+#details{padding:100px 48px;max-width:1100px;margin:0 auto;text-align:center}
+.sec-title{font-family:'Great Vibes',cursive;font-size:clamp(36px,8vw,58px);color:var(--cream);margin-bottom:8px}
+.sec-sub{font-family:'Playfair Display',serif;font-style:italic;font-size:13px;color:var(--lavender);letter-spacing:2px;margin-bottom:48px}
+.det-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:20px}
+.det-card{background:linear-gradient(145deg,rgba(75,0,130,.18),rgba(13,6,24,.6));border:1px solid rgba(212,175,55,.18);border-radius:18px;padding:36px 24px;backdrop-filter:blur(8px);transition:transform .3s,border-color .3s,box-shadow .3s;cursor:pointer;position:relative;overflow:hidden}
+.det-card::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 50% 0%,rgba(212,175,55,.07),transparent 70%);opacity:0;transition:opacity .3s}
+.det-card:hover{transform:translateY(-6px);border-color:rgba(212,175,55,.5);box-shadow:0 20px 60px rgba(75,0,130,.45)}
+.det-card:hover::before{opacity:1}
+.det-icon{width:44px;height:44px;margin:0 auto 16px;display:flex;align-items:center;justify-content:center;color:var(--gold)}
+.det-icon svg{width:28px;height:28px;display:block;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.det-label{font-size:8px;letter-spacing:4px;text-transform:uppercase;color:var(--gold);margin-bottom:8px;font-weight:700}
+.det-val{font-family:'Playfair Display',serif;font-size:16px;color:var(--cream);line-height:1.5}
+.det-val small{display:block;font-size:12px;color:var(--lavender);margin-top:4px;font-style:italic}
+.det-hint{font-size:8px;letter-spacing:2px;text-transform:uppercase;color:rgba(200,164,212,.35);margin-top:10px}
+
+/* ══════════════════════════════
+   SPECIAL MOMENTS — FAIRYTALE FRAMES
+══════════════════════════════ */
+#events{padding:100px 48px;max-width:1400px;margin:0 auto;text-align:center}
+.events-grid{display:flex;flex-wrap:wrap;gap:32px;margin-top:48px;align-items:flex-start;justify-content:center;max-width:1400px;margin-left:auto;margin-right:auto}
+.event-card{position:relative;cursor:pointer;transition:transform .35s cubic-bezier(.34,1.4,.64,1);width:100%;max-width:300px;flex-shrink:0}
+.events-carousel-wrap { position: relative; max-width: 1400px; margin: 0 auto; }
+.events-nav-btn { display: none; position: absolute; top: 50%; transform: translateY(-50%); z-index: 10; width: 40px; height: 40px; background: rgba(13,6,24,.8); border: 1px solid rgba(212,175,55,.4); border-radius: 50%; color: var(--gold); align-items: center; justify-content: center; cursor: pointer; }
+.events-prev { left: 4px; } .events-next { right: 4px; }
+.events-nav-btn::after { font-size: 16px; font-weight: bold; }
+.event-card:hover{transform:translateY(-10px) scale(1.02)}
+.frame-svg{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:4;overflow:visible}
+.frame-border{position:absolute;inset:0;border-radius:4px;z-index:3;pointer-events:none;box-shadow:inset 0 0 0 2px rgba(212,175,55,.9),inset 0 0 0 5px rgba(13,6,24,.8),inset 0 0 0 7px rgba(212,175,55,.6),inset 0 0 0 10px rgba(13,6,24,.5),inset 0 0 0 12px rgba(212,175,55,.4),0 0 0 1px rgba(212,175,55,.5),0 4px 24px rgba(75,0,130,.5),0 8px 40px rgba(0,0,0,.4)}
+.event-photo{position:relative;width:100%;padding-bottom:130%;overflow:hidden;border-radius:3px;background:linear-gradient(145deg,rgba(30,11,56,.9),rgba(10,3,26,.95))}
+.event-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(.85) saturate(1.1);transition:transform .5s ease,filter .4s ease}
+.event-card:hover .event-photo img{transform:scale(1.07);filter:brightness(1) saturate(1.25)}
+.event-label{position:relative;z-index:5;background:linear-gradient(135deg,rgba(13,6,24,.96),rgba(30,11,56,.92));border-top:1px solid rgba(212,175,55,.3);padding:14px 10px 16px;text-align:center}
+.event-label-icon{font-size:18px;color:var(--gold);margin-bottom:6px;display:block;filter:drop-shadow(0 0 6px rgba(212,175,55,.5))}
+.event-label-title{font-family:'Playfair Display',serif;font-size:12px;font-weight:700;color:var(--cream);letter-spacing:1px;display:block;margin-bottom:4px}
+.event-label-sub{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--lavender);display:block;opacity:.7}
+.event-badge{position:absolute;top:10px;right:10px;z-index:6;background:linear-gradient(135deg,var(--gold2),var(--gold));color:var(--plum);font-size:9px;font-weight:700;letter-spacing:1px;padding:4px 10px;border-radius:20px;box-shadow:0 2px 12px rgba(212,175,55,.5);font-family:'Playfair Display',serif}
+.event-shimmer{position:absolute;inset:0;z-index:3;background:linear-gradient(135deg,transparent 40%,rgba(212,175,55,.06) 50%,transparent 60%);background-size:200% 200%;transition:background-position .4s ease;pointer-events:none}
+.event-card:hover .event-shimmer{background-position:100% 100%;animation:shimmerSlide 1.2s ease forwards}
+@keyframes shimmerSlide{0%{background-position:0% 0%}100%{background-position:200% 200%}}
+.event-participants{position:absolute;inset:0;z-index:5;background:linear-gradient(180deg,rgba(13,6,24,.0) 0%,rgba(13,6,24,.85) 55%,rgba(13,6,24,.97) 100%);display:flex;flex-direction:column;justify-content:flex-end;padding:12px 12px 14px;opacity:0;transition:opacity .35s ease;pointer-events:none}
+.event-card:hover .event-label-sub{opacity:0}
+.participants-title{font-size:7px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:6px;text-align:center}
+.participants-list{display:flex;flex-direction:column;gap:3px}
+.participant-row{display:flex;align-items:center;gap:7px;font-size:10px;color:var(--cream);font-family:'Playfair Display',serif;font-style:italic}
+.participant-row::before{content:'✦';color:var(--gold);font-size:7px;flex-shrink:0;font-style:normal}
+.add-photo-hint{position:absolute;bottom:8px;left:50%;transform:translateX(-50%);z-index:6;font-size:8px;letter-spacing:2px;text-transform:uppercase;color:rgba(212,175,55,.45);white-space:nowrap;pointer-events:none}
+
+/* ── GALLERY ── */
+#gallery{padding:0 48px 100px;max-width:1300px;margin:0 auto;text-align:center;position:relative}
+.gal-wrapper{position:relative}
+.gal-grid{column-width:280px;column-gap:18px;column-fill:balance;text-align:left}
+.gal-overlay{position:absolute;bottom:0;left:0;right:0;height:180px;background:linear-gradient(to bottom,transparent 0%,rgba(13,6,24,.88) 60%,rgba(13,6,24,.95) 100%);display:flex;align-items:flex-end;justify-content:center;padding:32px 24px;pointer-events:none;border-radius:0 0 24px 24px}
+.see-more-btn{pointer-events:all;background:linear-gradient(135deg,var(--gold2),var(--gold) 60%,#8B6914);color:var(--plum);font-size:11px;letter-spacing:3px;font-weight:700;text-transform:uppercase;padding:12px 32px;border-radius:40px;border:none;cursor:pointer;box-shadow:0 8px 32px rgba(212,175,55,.35);transition:transform .2s,box-shadow .2s}
+.see-more-btn:hover{transform:translateY(-2px);box-shadow:0 12px 40px rgba(212,175,55,.55)}
+.gimg{display:inline-block;width:100%;margin:0 0 18px;break-inside:avoid;position:relative;border-radius:24px;overflow:hidden;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);box-shadow:0 24px 60px rgba(0,0,0,.24);transition:transform .3s ease,box-shadow .3s ease}
+.gimg:hover{transform:translateY(-4px);box-shadow:0 28px 72px rgba(0,0,0,.28)}
+.gimg img{width:100%;height:auto;display:block;object-fit:cover;filter:brightness(.96) saturate(1.14);transition:transform .6s ease,filter .5s ease}
+.gimg:hover img{transform:scale(1.05);filter:brightness(1) saturate(1.2)}
+.gimg::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 70%,rgba(13,6,24,.18) 100%);pointer-events:none}
+@media(max-width:980px){.gal-grid{column-width:240px;column-gap:16px}}
+@media(max-width:640px){.gal-grid{column-width:100%;column-gap:14px}#gallery{padding:0 24px 70px}}
+
+/* ── DRESS CODE (cleaned, modal-driven) ── */
+#dresscode{padding:80px 48px;text-align:center;background:linear-gradient(135deg,rgba(75,0,130,.22),rgba(25,8,48,.4));border-top:1px solid rgba(212,175,55,.1);border-bottom:1px solid rgba(212,175,55,.1);backdrop-filter:blur(6px)}
+.dc-title{font-size:9px;letter-spacing:5px;text-transform:uppercase;color:var(--gold);margin-bottom:12px}
+.dc-val{font-family:'Playfair Display',serif;font-size:clamp(18px,4vw,28px);color:var(--cream);letter-spacing:2px;margin-bottom:8px}
+.dc-tap{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:rgba(200,164,212,.4);margin-bottom:32px}
+.dress-showcase{display:flex;align-items:center;justify-content:center;gap:32px;flex-wrap:wrap;margin:0 auto 36px;max-width:800px}
+.dress-figure{position:relative;text-align:center;cursor:pointer}
+.dress-silhouette{position:relative;width:130px;height:200px;margin:0 auto 12px}
+.dress-glow{position:absolute;inset:-12px;border-radius:50% 50% 40% 40%;opacity:0;transition:opacity .4s;filter:blur(20px)}
+.dress-figure:hover .dress-glow{opacity:.7}
+.dress-svg{width:100%;height:100%;filter:drop-shadow(0 8px 24px rgba(0,0,0,.5))}
+.dress-label{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--lavender);margin-top:6px}
+.dress-name{font-family:'Playfair Display',serif;font-size:14px;color:var(--cream);margin-top:3px}
+.dress-or{display:flex;flex-direction:column;align-items:center;gap:8px;color:rgba(212,175,55,.3);font-size:10px;letter-spacing:3px;padding-top:60px}
+.dc-swatches{display:flex;gap:0;justify-content:center;margin:0 auto;border-radius:40px;overflow:hidden;width:fit-content;border:1px solid rgba(212,175,55,.25);box-shadow:0 8px 30px rgba(0,0,0,.4);cursor:pointer;transition:transform .25s,box-shadow .25s}
+.dc-swatches:hover{transform:translateY(-3px);box-shadow:0 14px 40px rgba(212,175,55,.25)}
+.swatch-block{display:flex;flex-direction:column;align-items:center;padding:16px 20px;gap:8px;transition:background .2s}
+.swatch-block:hover{background:rgba(255,255,255,.05)}
+.swatch{width:32px;height:32px;border-radius:50%;border:2px solid rgba(212,175,55,.3);box-shadow:0 4px 14px rgba(0,0,0,.4)}
+.swatch-name{font-size:8px;letter-spacing:1px;text-transform:uppercase;color:var(--lavender);white-space:nowrap}
+
+footer{padding:44px 24px;text-align:center;border-top:1px solid rgba(200,164,212,.08)}
+.foot-logo{font-family:'Great Vibes',cursive;font-size:28px;color:var(--gold);margin-bottom:8px}
+.foot-text{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:rgba(200,164,212,.28)}
+
+/* CARD MODAL */
+#card-wrap{position:fixed;inset:0;z-index:500;display:flex;align-items:center;justify-content:center;padding:20px;opacity:0;pointer-events:none;transition:opacity .4s}
+#card-wrap.show{opacity:1;pointer-events:all}
+#backdrop{position:fixed;inset:0;background:rgba(5,2,12,.92);backdrop-filter:blur(12px);cursor:pointer}
+#card{position:relative;z-index:2;width:min(480px,96vw);max-height:90vh;overflow-y:auto;background:linear-gradient(160deg,#1E0B38 0%,#0A031A 100%);border-radius:20px;border:1px solid rgba(212,175,55,.3);box-shadow:0 0 0 1px rgba(200,164,212,.06),0 40px 120px rgba(75,0,130,.8);scrollbar-width:thin;scrollbar-color:var(--violet) transparent;transform:scale(.88) translateY(30px);transition:transform .5s cubic-bezier(.34,1.4,.64,1)}
+#card-wrap.show #card{transform:scale(1) translateY(0)}
+.gold-bar{height:3px;background:linear-gradient(90deg,transparent,var(--gold),var(--gold2),var(--gold),transparent)}
+.gold-bar.top{border-radius:20px 20px 0 0}.gold-bar.bot{border-radius:0 0 20px 20px;margin-top:24px}
+.card-hero{width:100%;height:auto;object-fit:contain;display:block}
+.card-fade{height:70px;margin-top:-70px;position:relative;z-index:1;background:linear-gradient(transparent,#0A031A)}
+.cc{padding:0 28px 28px;text-align:center;margin-top:20px}
+.c-ey{font-size:9px;letter-spacing:5px;text-transform:uppercase;color:var(--gold);margin-bottom:16px}
+.c-script{font-family:'Great Vibes',cursive;font-size:clamp(36px,9vw,56px);color:var(--cream);line-height:1}
+.c-18{font-family:'Playfair Display',serif;font-weight:700;font-size:clamp(80px,20vw,120px);line-height:.82;color:transparent;-webkit-text-stroke:2px var(--gold);letter-spacing:-5px;display:block;margin-bottom:4px}
+.c-sub{font-family:'Playfair Display',serif;font-style:italic;font-size:12px;color:var(--lavender);letter-spacing:2px;margin-bottom:22px}
+.cdiv{display:flex;align-items:center;gap:12px;margin:0 auto 20px;max-width:260px}
+.cdl{flex:1;height:1px}.cdl.l{background:linear-gradient(90deg,transparent,rgba(212,175,55,.5))}.cdl.r{background:linear-gradient(90deg,rgba(212,175,55,.5),transparent)}
+.cgem{width:7px;height:7px;background:var(--gold);transform:rotate(45deg);box-shadow:0 0 8px var(--gold)}
+.c-cel{font-size:8px;letter-spacing:4px;text-transform:uppercase;color:var(--lavender);margin-bottom:5px}
+.c-name{font-family:'Great Vibes',cursive;font-size:clamp(30px,8vw,46px);color:var(--cream);margin-bottom:20px;line-height:1.1}
+.c-dg{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-bottom:20px}
+.c-db{background:rgba(255,255,255,.04);border:1px solid rgba(212,175,55,.15);border-radius:10px;padding:12px 8px}
+.c-di{font-size:22px;margin-bottom:6px;color:var(--gold);display:flex;justify-content:center}
+.c-dl{font-size:7px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:3px}
+.c-dv{font-family:'Playfair Display',serif;font-size:11px;color:var(--cream);line-height:1.4}
+.c-strip{display:flex;gap:6px;height:78px;margin-bottom:18px;border-radius:10px;overflow:hidden}
+.c-strip img{flex:1;object-fit:cover;object-position:top;filter:brightness(.65) saturate(1.3);border-radius:6px;transition:flex .4s,filter .4s}
+.c-strip img:hover{flex:2.2;filter:brightness(.9);object-position:center}
+.c-rsvp{background:linear-gradient(135deg,rgba(75,0,130,.2),rgba(13,5,30,.5));border:1px solid rgba(212,175,55,.2);border-radius:12px;padding:18px;margin-bottom:18px}
+.c-rsvp p{font-size:11px;color:var(--lavender);line-height:1.8;font-weight:300;margin-bottom:12px}
+.c-rsvp strong{color:var(--cream)}
+.rbtn{background:linear-gradient(135deg,var(--gold2),var(--gold) 60%,#8B6914);color:var(--plum);font-size:10px;letter-spacing:3px;font-weight:700;text-transform:uppercase;padding:12px 28px;border-radius:40px;border:none;cursor:pointer;box-shadow:0 6px 20px rgba(212,175,55,.3);transition:transform .2s,box-shadow .2s}
+.rbtn:hover{transform:translateY(-2px);box-shadow:0 12px 28px rgba(212,175,55,.5)}
+.c-foot{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:rgba(200,164,212,.28);font-weight:300}
+.xbtn{position:absolute;top:14px;right:14px;z-index:20;width:32px;height:32px;border-radius:50%;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);color:var(--lavender);font-size:15px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .2s,color .2s}
+.xbtn:hover{background:rgba(212,175,55,.2);color:var(--gold)}
+.card-xbtn{top:-10px;right:-10px;background:rgba(0,0,0,.25);border-color:rgba(255,255,255,.2)}
+.card-image-count{position:absolute;top:10px;left:50%;transform:translateX(-50%);z-index:10;background:rgba(0,0,0,.4);padding:4px 12px;border-radius:20px;font-size:12px;color:var(--cream);font-family:'Playfair Display',serif;border:1px solid rgba(255,255,255,.15)}
+
+/* ══ DETAIL MODALS (calendar / clock / map / programme / dress code) ══ */
+.modal-overlay{position:fixed;inset:0;z-index:600;display:flex;align-items:center;justify-content:center;padding:20px;background:rgba(5,2,12,.9);backdrop-filter:blur(16px);opacity:0;pointer-events:none;transition:opacity .4s}
+.modal-overlay.show{opacity:1;pointer-events:all}
+.modal-box{position:relative;z-index:2;width:min(520px,96vw);max-height:90vh;overflow-y:auto;background:linear-gradient(160deg,#1A0630 0%,#0A031A 100%);border-radius:24px;border:1px solid rgba(212,175,55,.3);box-shadow:0 0 0 1px rgba(200,164,212,.06),0 40px 120px rgba(75,0,130,.8);transform:scale(.88) translateY(30px);transition:transform .5s cubic-bezier(.34,1.4,.64,1);scrollbar-width:thin;scrollbar-color:var(--violet) transparent}
+.modal-overlay.show .modal-box{transform:scale(1) translateY(0)}
+.modal-inner{padding:32px 28px 24px}
+.modal-title{font-family:'Great Vibes',cursive;font-size:36px;color:var(--cream);text-align:center;margin-bottom:4px}
+.modal-sub{font-size:9px;letter-spacing:4px;text-transform:uppercase;color:var(--gold);text-align:center;margin-bottom:24px}
+
+/* Calendar */
+.cal-wrap{user-select:none}
+.cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:4px;text-align:center}
+.cal-dow{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--lavender);padding:8px 0;opacity:.6}
+.cal-day{position:relative;width:100%;padding-bottom:100%;border-radius:10px}
+.cal-day-inner{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:14px;color:var(--text);border-radius:10px}
+.cal-day.other .cal-day-inner{color:rgba(200,164,212,.2)}
+.cal-day.event-day .cal-day-inner{background:linear-gradient(135deg,var(--gold2),var(--gold));color:var(--plum);font-weight:700;box-shadow:0 0 20px rgba(212,175,55,.5),0 0 40px rgba(212,175,55,.2)}
+.cal-day.event-day::after{content:'';position:absolute;inset:-3px;border-radius:13px;border:2px solid var(--gold2);animation:calPulse 2s ease-in-out infinite;z-index:-1}
+@keyframes calPulse{0%,100%{opacity:.3;transform:scale(1)}50%{opacity:.8;transform:scale(1.08)}}
+.cal-ring{position:absolute;inset:-5px;border-radius:15px;border:2px dashed rgba(212,175,55,.4);pointer-events:none}
+.cal-event-note{margin-top:20px;padding:14px 18px;background:rgba(212,175,55,.06);border:1px solid rgba(212,175,55,.2);border-radius:12px;text-align:center}
+.cal-event-note p{font-family:'Playfair Display',serif;font-style:italic;font-size:15px;color:var(--cream)}
+.cal-event-note span{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);display:block;margin-top:4px}
+.countdown-strip{display:flex;gap:12px;justify-content:center;margin-top:20px;flex-wrap:wrap}
+.cd-pill{background:rgba(255,255,255,.04);border:1px solid rgba(212,175,55,.18);border-radius:12px;padding:12px 16px;text-align:center;min-width:68px}
+.cd-pill .num{font-family:'Playfair Display',serif;font-size:28px;font-weight:700;color:var(--gold2);line-height:1}
+.cd-pill .lbl{font-size:8px;letter-spacing:2px;text-transform:uppercase;color:var(--lavender);margin-top:4px}
+
+/* Clock */
+.clock-scene{display:flex;flex-direction:column;align-items:center;gap:20px}
+.clock-outer{position:relative;width:240px;height:240px;margin:0 auto;border-radius:50%;background:radial-gradient(circle at 38% 28%, #3A3A5C, #1A1A2E 55%, #0A0A14);box-shadow:0 0 0 6px rgba(180,140,60,.4),0 0 0 10px rgba(212,175,55,.15),0 0 0 14px rgba(180,140,60,.1),0 30px 80px rgba(0,0,0,.8),inset 0 2px 8px rgba(255,255,255,.08)}
+.clock-rim{position:absolute;inset:0;border-radius:50%;border:3px solid rgba(212,175,55,.6);box-shadow:inset 0 0 20px rgba(212,175,55,.1)}
+.clock-number{position:absolute;font-family:'Playfair Display',serif;font-weight:700;color:rgba(212,175,55,.85);font-size:11px;transform:translate(-50%,-50%)}
+.clock-hand{position:absolute;left:50%;bottom:50%;border-radius:4px;transform-origin:50% 100%;margin-left:-3px;z-index:9}
+.hour-hand{width:6px;height:58px;background:linear-gradient(to top,var(--gold),var(--gold2));box-shadow:0 0 8px rgba(212,175,55,.7);border-radius:3px 3px 0 0;margin-left:-3px;z-index:6}
+.min-hand{width:3.5px;height:86px;background:linear-gradient(to top,#E8D5F5,#fff);box-shadow:0 0 6px rgba(232,213,245,.6);border-radius:2px 2px 0 0;margin-left:-1.75px;z-index:7}
+.sec-hand{width:1.5px;height:92px;background:linear-gradient(to top,rgba(255,90,90,.95),#ff9a9a);border-radius:1px 1px 0 0;margin-left:-.75px;z-index:8}
+.sec-hand::after{content:'';position:absolute;left:50%;bottom:-14px;width:1.5px;height:14px;background:rgba(255,90,90,.7);transform:translateX(-50%)}
+.clock-center{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:12px;height:12px;border-radius:50%;background:radial-gradient(circle,var(--gold2),var(--gold));box-shadow:0 0 10px rgba(212,175,55,.8);z-index:10}
+.clock-ornament{position:absolute;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:rgba(212,175,55,.4);bottom:30%}
+.clock-ornament-top{position:absolute;font-family:'Great Vibes',cursive;font-size:13px;color:rgba(212,175,55,.5);top:28%}
+.clock-time-display{text-align:center;background:rgba(255,255,255,.04);border:1px solid rgba(212,175,55,.2);border-radius:14px;padding:14px 28px}
+.clock-time-display .big-time{font-family:'Playfair Display',serif;font-size:42px;font-weight:700;color:var(--gold2);letter-spacing:3px}
+.clock-time-display .big-label{font-size:9px;letter-spacing:4px;text-transform:uppercase;color:var(--lavender);margin-top:4px;display:block}
+.event-time-row{display:flex;gap:16px;justify-content:center;margin-top:12px;flex-wrap:wrap}
+.etime-pill{background:rgba(75,0,130,.2);border:1px solid rgba(212,175,55,.18);border-radius:10px;padding:10px 16px;text-align:center}
+.etime-pill .et-val{font-family:'Playfair Display',serif;font-size:16px;color:var(--cream)}
+.etime-pill .et-lbl{font-size:8px;letter-spacing:2px;color:var(--lavender);text-transform:uppercase;margin-top:2px}
+
+/* Map */
+.map-wrap{border-radius:16px;overflow:hidden;border:1px solid rgba(212,175,55,.2)}
+.map-frame{width:100%;height:300px;border:none;display:block}
+.map-info-bar{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin-top:16px}
+.map-info-pill{display:flex;align-items:center;gap:8px;background:rgba(75,0,130,.2);border:1px solid rgba(212,175,55,.15);border-radius:10px;padding:10px 14px;flex:1;min-width:120px}
+.map-info-pill i{color:var(--gold);font-size:14px;flex-shrink:0}
+.map-info-pill .mil{font-size:8px;letter-spacing:2px;text-transform:uppercase;color:var(--lavender)}
+.map-info-pill .miv{font-family:'Playfair Display',serif;font-size:14px;color:var(--cream)}
+.navigate-btn{display:block;width:100%;margin-top:16px;background:linear-gradient(135deg,var(--gold2),var(--gold) 60%,#8B6914);color:var(--plum);font-size:11px;letter-spacing:3px;font-weight:700;text-transform:uppercase;padding:14px;border-radius:40px;border:none;cursor:pointer;box-shadow:0 8px 32px rgba(212,175,55,.35);transition:transform .2s,box-shadow .2s;text-decoration:none;text-align:center}
+.navigate-btn:hover{transform:translateY(-2px);box-shadow:0 12px 40px rgba(212,175,55,.55)}
+
+/* Programme */
+.prog-timeline{display:flex;flex-direction:column;gap:0;position:relative}
+.prog-timeline::before{content:'';position:absolute;left:28px;top:0;bottom:0;width:1px;background:linear-gradient(to bottom,transparent,rgba(212,175,55,.3) 10%,rgba(212,175,55,.3) 90%,transparent)}
+.prog-item{display:flex;gap:16px;padding:16px 0;position:relative}
+.prog-dot{flex-shrink:0;width:14px;height:14px;border-radius:50%;margin-top:4px;position:relative;z-index:1;border:2px solid var(--gold);background:var(--plum);box-shadow:0 0 8px rgba(212,175,55,.4);margin-left:22px}
+.prog-dot.active{background:linear-gradient(135deg,var(--gold2),var(--gold));box-shadow:0 0 16px rgba(212,175,55,.7)}
+.prog-content{flex:1}
+.prog-time{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:3px}
+.prog-event{font-family:'Playfair Display',serif;font-size:15px;color:var(--cream);margin-bottom:2px}
+.prog-note{font-size:11px;color:var(--lavender);line-height:1.5}
+
+/* Dress code modal */
+.dress-mod-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px}
+.dress-mod-card{background:rgba(75,0,130,.2);border:1px solid rgba(212,175,55,.18);border-radius:12px;padding:14px}
+.dress-mod-card .dmi{font-size:18px;color:var(--gold);margin-bottom:6px}
+.dress-mod-card .dml{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:6px}
+.dress-mod-card .dmv{font-family:'Playfair Display',serif;font-size:13px;color:var(--cream);line-height:1.6}
+.dress-mod-note{margin-top:16px;padding:12px;background:rgba(212,175,55,.06);border:1px solid rgba(212,175,55,.18);border-radius:10px}
+.dress-mod-note p:first-child{font-size:10px;color:var(--gold);letter-spacing:2px}
+.dress-mod-note p:last-child{font-size:11px;color:var(--lavender);margin-top:4px}
+
+@media(max-width:680px){
+  #countdown, #details, #events, #dresscode { padding-left: 24px; padding-right: 24px; }
+  nav{padding:20px 20px}.nav-links{display:none}.nav-logo{left:20px}.nav-cta{right:20px;padding:12px 24px}
+  #hero{min-height:92svh;padding:88px 24px 72px;background-image:url('./assets/gallery/100.jpg');background-position:center top;background-attachment:scroll;display:grid;grid-template-rows:auto 1fr;align-content:start;justify-items:center}
+  .h-top{width:100%;text-align:center;margin-bottom:16px}
+  .h-body{width:100%;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;padding-bottom:20px}
+  .h-ey{margin-bottom:0}.h-script{font-size:clamp(40px,11vw,72px)}.h-18{font-size:clamp(96px,26vw,160px)}
+  .hdiv{margin:18px auto 22px}.h-btns{margin-top:6px}
+  .gal-grid{column-width:100%;column-gap:14px}
+  .events-nav-btn { display: flex; }
+  /* keep background effects; performance handled by reducing particle counts */
+  .events-swiper { overflow: hidden; padding: 10px 12px 30px; margin: 0; }
+  /* keep wrapper left-aligned; Swiper will translate slides to center */
+  .events-swiper .events-grid { flex-wrap: nowrap !important; margin-top: 0 !important; justify-content: flex-start !important; }
+  /* slides take most of viewport on mobile; no auto margins so Swiper can center slides precisely */
+  /* For slidesPerView:1, let slides fill most of the container and center via margins */
+  .events-swiper .event-card { width: calc(100% - 24px) !important; max-width: 360px !important; margin: 0 auto; }
+  .modal-box{width:92%;padding:18px 16px;max-height:88vh}
+  .modal-inner{padding:12px !important}
+  .clock-outer{width:200px;height:200px}
+  .event-time-row{flex-wrap:wrap;gap:12px}
+  .dress-mod-card{padding:16px}
+  .dress-showcase{gap:16px}
+  .dress-figure .dress-silhouette{width:100px;height:150px}
+  .dress-figure .dress-svg{width:100%;height:100%}
+  .dress-label{font-size:8px}
+  .dress-name{font-size:11px}
+  .dress-or{padding-top:40px;font-size:8px}
+  .dc-swatches{overflow-x:auto;padding:0 20px;scrollbar-width:none;width:100%}
+  .dc-swatches::-webkit-scrollbar{display:none}
+  .swatch-block{padding:10px 10px;flex-shrink:0}
+  .swatch{width:24px;height:24px}
+  .swatch-name{font-size:6px;letter-spacing:1px}
+  #dresscode .dress-figure{margin:16px 0}
+  #dresscode .dress-silhouette{width:120px;height:180px}
+  #dresscode .dress-svg{width:100%;height:100%}
+  .dc-title{font-size:14px}
+  .dc-val{font-size:12px}
+  .dc-tap{font-size:8px}
+  .countdown-strip{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;width:100%;justify-content:flex-start;padding:0 4px}
+  .countdown-strip::-webkit-scrollbar{display:none}
+  .cd-pill{flex-shrink:0;min-width:60px;padding:10px 12px}
+  .cd-pill .num{font-size:22px}
+}
+@media(max-width:440px){
+  .events-swiper { overflow: hidden; padding: 10px 12px 30px; margin: 0; }
+  /* let Swiper control layout: keep wrapper left-aligned so translate centering works */
+  .events-swiper .events-grid { flex-wrap: nowrap !important; margin-top: 0 !important; justify-content: flex-start !important; }
+  /* slides should take most of viewport on very small screens; remove auto margins */
+  .events-swiper .event-card { width: 85vw !important; max-width: 320px !important; margin: 0; }
+  .dress-mod-grid{grid-template-columns:1fr}
+  .clock-outer{width:180px;height:180px}
+  .clock-number{font-size:10px}
+  .clock-number[style*="font-size:8px"]{font-size:7px !important}
+  .purple-magic-item{width:260px;height:350px}
+  #card-wrap .modal-box{width:94%}
+}
+
+/* Fullscreen Image Viewer */
+#fullscreen-viewer{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.95);z-index:10000;align-items:center;justify-content:center;cursor:pointer}
+#fullscreen-viewer.active{display:flex}
+#fullscreen-img{max-width:90%;max-height:90%;object-fit:contain}
+#fullscreen-close{position:absolute;top:20px;right:20px;background:transparent;border:none;color:#fff;font-size:40px;cursor:pointer;z-index:10001;transition:transform 0.2s}
+#fullscreen-close:hover{transform:scale(1.2)}
+
+/* Purple Magic Horizontal Gallery */
+.pm-container{display:flex;align-items:center;justify-content:center;gap:80px;max-width:1100px;margin:60px auto;padding:0 24px}
+.purple-magic-swiper{width:340px !important;height:480px !important;margin:0 !important;flex-shrink:0;animation:fadeInUp 0.3s ease-out 0.5s both;overflow:visible !important}
+@keyframes fadeInUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+.purple-magic-swiper .swiper-slide{border-radius:24px;overflow:hidden;box-shadow:0 10px 30px rgba(0,0,0,0.5)}
+.purple-magic-swiper .swiper-slide img{width:100%;height:100%;object-fit:cover;display:block}
+
+.pm-info{flex:1;text-align:left;max-width:500px}
+#pm-title{font-family:'Great Vibes',cursive;font-size:3.5rem;color:var(--gold);margin-bottom:20px;text-shadow:0 2px 4px rgba(0,0,0,0.5);letter-spacing:1px}
+#pm-desc{font-family:'Lora',serif;font-size:1.15rem;color:var(--cream);line-height:1.6;opacity:0.9;text-shadow:0 1px 2px rgba(0,0,0,0.8);margin-bottom:30px}
+.pm-gallery-btn{display:inline-block;padding:12px 28px;background:transparent;border:1px solid rgba(212,175,55,.4);border-radius:30px;color:var(--gold);font-family:'Lora',serif;font-size:1rem;text-transform:uppercase;letter-spacing:1px;text-decoration:none;transition:all 0.3s ease;cursor:pointer}
+.pm-gallery-btn:hover{background:rgba(212,175,55,.1);border-color:var(--gold);transform:translateY(-2px);box-shadow:0 4px 15px rgba(212,175,55,.2)}
+
+@media(max-width:800px){
+  .pm-container{flex-direction:column;gap:50px;text-align:center;margin:40px auto;padding:0 16px}
+  .purple-magic-swiper{width:260px !important;height:360px !important}
+  .pm-info{text-align:center;padding:0 10px;margin-top:10px}
+  #pm-title{font-size:2.4rem;margin-bottom:12px}
+  #pm-desc{font-size:1rem;margin-bottom:24px}
+  .pm-gallery-btn{padding:10px 24px;font-size:0.9rem}
+}
+
+/* Background Music */
+.music-btn{position:fixed;bottom:24px;right:24px;z-index:1000;width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,rgba(212,175,55,.35),rgba(75,0,130,.35));backdrop-filter:blur(10px);border:1px solid rgba(212,175,55,.35);color:var(--cream);font-size:22px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .3s;box-shadow:0 10px 30px rgba(0,0,0,.45)}
+.music-btn:hover{transform:scale(1.1);background:linear-gradient(135deg,rgba(212,175,55,.55),rgba(75,0,130,.55))}
+.music-btn.playing{animation:pulse 1.5s infinite}
+@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.06)}}
+@media(max-width:600px){.music-btn{width:48px;height:48px;font-size:18px;bottom:18px;right:18px}}
+</style>
+</head>
+<body>
+
+<div id="magic-bg">
+  <div class="aurora a1"></div><div class="aurora a2"></div><div class="aurora a3"></div><div class="aurora a4"></div>
+  <div id="stars"></div><div id="sparkles"></div>
+</div>
+
+<div id="fairytale-overlay">
+  <div id="portal"></div><div id="portal-glow"></div><div id="flash"></div>
+  <div id="magic-words">
+    <span class="mw-script">Once Upon a Time…</span>
+    <span class="mw-sub">✦ A Magical Night Awaits ✦</span>
+  </div>
+</div>
+
+<div id="intro">
+  <p class="intro-label">✦ An Exclusive Invitation ✦</p>
+  <p class="intro-title">You have been invited to<br>something magical</p>
+  <div id="env-container" onclick="openEnvelope()">
+    <svg viewBox="0 0 460 290" xmlns="http://www.w3.org/2000/svg" style="width:100%;display:block;overflow:visible">
+      <defs>
+        <linearGradient id="bG" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#2D1255"/><stop offset="100%" stop-color="#180930"/></linearGradient>
+        <linearGradient id="fG" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#3C1870"/><stop offset="100%" stop-color="#251048"/></linearGradient>
+        <linearGradient id="fI" x1="0" y1="1" x2="0" y2="0"><stop offset="0%" stop-color="#180930"/><stop offset="100%" stop-color="#0D0520"/></linearGradient>
+      </defs>
+      <rect x="0" y="0" width="460" height="290" rx="8" fill="url(#bG)"/>
+      <rect x="0" y="0" width="460" height="290" rx="8" fill="none" stroke="rgba(212,175,55,.35)" stroke-width="1.5"/>
+      <polygon points="0,290 230,136 460,290" fill="rgba(255,255,255,.03)"/>
+      <line x1="0" y1="290" x2="230" y2="136" stroke="rgba(212,175,55,.1)" stroke-width="1"/>
+      <line x1="460" y1="290" x2="230" y2="136" stroke="rgba(212,175,55,.1)" stroke-width="1"/>
+      <polygon points="0,0 0,290 230,136" fill="rgba(255,255,255,.025)"/>
+      <polygon points="460,0 460,290 230,136" fill="rgba(255,255,255,.025)"/>
+      <g id="flap-group">
+        <polygon points="0,0 460,0 230,152" fill="url(#fI)" opacity=".9"/>
+        <polygon points="0,0 460,0 230,152" fill="url(#fG)"/>
+        <line x1="0" y1="0" x2="230" y2="152" stroke="rgba(212,175,55,.2)" stroke-width="1"/>
+        <line x1="460" y1="0" x2="230" y2="152" stroke="rgba(212,175,55,.2)" stroke-width="1"/>
+        <line x1="0" y1="0" x2="460" y2="0" stroke="rgba(212,175,55,.38)" stroke-width="1.5"/>
+      </g>
+      <line x1="60" y1="152" x2="400" y2="152" stroke="rgba(212,175,55,.14)" stroke-width="1" stroke-dasharray="5 7"/>
+    </svg>
+    <div id="seal-wrap"><div class="seal-circle">18</div></div>
+  </div>
+  <span class="env-hint">✦ tap to open your invitation ✦</span>
+</div>
+
+<div id="site">
+  <nav>
+    <div class="nav-logo">Jamaica</div>
+    <ul class="nav-links">
+      <li><a href="#details">Details</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
+      <li><a href="#dresscode">Dress Code</a></li>
+    </ul>
+    <button class="nav-cta" onclick="showCard()">View Invitation ✦</button>
+  </nav>
+
+  <section id="hero">
+    <div class="h-top"><p class="h-ey">✦ July 18, 2026 · The Grand Ballroom, Maria, Aurora ✦</p></div>
+    <div class="h-body">
+      <div class="h-script">Jamaica Gutierrez</div>
+      <span class="h-18">18</span>
+      <p class="h-sub">A Night to Remember, Forever</p>
+      <div class="hdiv"><span class="hdl l"></span><span class="hgem"></span><span class="hdl r"></span></div>
+      <div class="h-btns">
+        <button class="btn-p" onclick="showCard()">View My Invitation ✦</button>
+        <button class="btn-o" onclick="document.getElementById('details').scrollIntoView({behavior:'smooth'})">Event Details</button>
+      </div>
+    </div>
+    <div class="scroll-hint"><span>Scroll</span><div class="sarrow"></div></div>
+  </section>
+
+  <section id="countdown">
+    <p class="sec-label">✦ Counting down to the celebration ✦</p>
+    <div class="cd-grid">
+      <div class="cd-box"><div class="cd-num" id="cd-d">00</div><div class="cd-unit">Days</div></div>
+      <div class="cd-box"><div class="cd-num" id="cd-h">00</div><div class="cd-unit">Hours</div></div>
+      <div class="cd-box"><div class="cd-num" id="cd-m">00</div><div class="cd-unit">Minutes</div></div>
+      <div class="cd-box"><div class="cd-num" id="cd-s">00</div><div class="cd-unit">Seconds</div></div>
+    </div>
+  </section>
+
+  <section id="details">
+    <p class="sec-label">✦ The Details ✦</p>
+    <h2 class="sec-title">Join the Celebration</h2>
+    <p class="sec-sub">Everything you need to know for the night</p>
+    <div class="det-cards">
+      <div class="det-card" onclick="openModal('cal-modal')">
+        <div class="det-icon"><svg viewBox="0 0 24 24"><rect x="3.5" y="5.5" width="17" height="15" rx="2"/><line x1="3.5" y1="9" x2="20.5" y2="9"/><line x1="8" y1="3.5" x2="8" y2="7"/><line x1="16" y1="3.5" x2="16" y2="7"/></svg></div>
+        <div class="det-label">Date</div><div class="det-val">Saturday, July 18<small>2026</small></div>
+        <div class="det-hint">✦ tap to view calendar</div>
+      </div>
+      <div class="det-card" onclick="openModal('clock-modal')">
+        <div class="det-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="7.5"/><line x1="12" y1="12" x2="12" y2="8"/><line x1="12" y1="12" x2="15" y2="13.5"/></svg></div>
+        <div class="det-label">Time</div><div class="det-val">4:30 PM<small>Doors open at 4:00</small></div>
+        <div class="det-hint">✦ tap to view clock</div>
+      </div>
+      <div class="det-card" onclick="openModal('map-modal')">
+        <div class="det-icon"><svg viewBox="0 0 24 24"><path d="M12 21s6-5.2 6-11a6 6 0 0 0-12 0c0 5.8 6 11 6 11z"/><circle cx="12" cy="10" r="2.2"/></svg></div>
+        <div class="det-label">Venue</div><div class="det-val">Purok 03, Barangay Sta. Lucia<small>Maria, Aurora</small></div>
+        <div class="det-hint">✦ tap for directions</div>
+      </div>
+      <div class="det-card" onclick="openModal('prog-modal')">
+        <div class="det-icon"><svg viewBox="0 0 24 24"><path d="M7 11v7"/><path d="M17 11v7"/><path d="M6 11h12"/><path d="M8 11V8.5a4 4 0 0 1 8 0V11"/><path d="M5 11h14"/></svg></div>
+        <div class="det-label">Programme</div><div class="det-val">Dinner &amp; Dancing<small>Until midnight</small></div>
+        <div class="det-hint">✦ tap to see schedule</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════ SPECIAL MOMENTS ══════════ -->
+  <section id="events">
+    <p class="sec-label">✦ Event Highlights ✦</p>
+    <h2 class="sec-title">Special Moments</h2>
+    <p class="sec-sub">Cherished memories in the making</p>
+
+    <div class="events-carousel-wrap">
+      <div class="events-swiper swiper">
+        <div class="events-grid swiper-wrapper">
+
+          <!-- 18 ROSES -->
+          <div class="event-card swiper-slide">
+        <div class="event-photo">
+          <img src="assets/events/roses.jpg" alt="18 Roses" onerror="this.style.display='none'">
+
+          <div class="event-participants">
+            <div class="participants-title">✦ 18 Roses ✦</div>
+            <div class="participants-list">
+              <div class="participant-row">18th Roses — Mc Grady Gutierrez</div>
+              <div class="participant-row">18th Roses — Jameson Gutierrez</div>
+              <div class="participant-row">18th Roses — JC Gutierrez</div>
+              <div class="participant-row">18th Roses — Asley Kerby Montejo</div>
+              <div class="participant-row">18th Roses — French Arvee Montejo</div>
+              <div class="participant-row">18th Roses — R-G Jerome Gutierrez</div>
+              <div class="participant-row">18th Roses — Patric Paul Gutierrez</div>
+              <div class="participant-row">18th Roses — Marc Johnvic Bugawan</div>
+              <div class="participant-row">18th Roses — Jayden Carl Gutierrez</div>
+              <div class="participant-row">18th Roses — Mario Ruzol</div>
+              <div class="participant-row">18th Roses — Rhoy Distor</div>
+              <div class="participant-row">18th Roses — Alfredo Castillo Jr.</div>
+              <div class="participant-row">18th Roses — Leenmar Gutierrez</div>
+              <div class="participant-row">18th Roses — Noldar Montejo</div>
+              <div class="participant-row">18th Roses — Humphry Gutierrez</div>
+              <div class="participant-row">18th Roses — Alfredo Castillo</div>
+              <div class="participant-row">18th Roses — Roberto Gutierrez</div>
+              <div class="participant-row">18th Roses — Romar Gutierrez</div>
+            </div>
+          </div>
+          <div class="event-shimmer"></div>
+        </div>
+        <svg class="frame-svg" viewBox="0 0 200 260" preserveAspectRatio="none">
+          <g stroke="#D4AF37" stroke-width="1.2" fill="none" opacity=".9">
+            <path d="M8,8 L8,28 M8,8 L28,8"/>
+            <path d="M8,8 Q14,14 20,8 Q14,14 8,20"/>
+            <circle cx="8" cy="8" r="2.5" fill="#D4AF37"/>
+            <path d="M14,4 L12,8 L16,8 Z" fill="#F5E070" stroke="none"/>
+            <path d="M4,14 L8,12 L8,16 Z" fill="#F5E070" stroke="none"/>
+          </g>
+          <g stroke="#D4AF37" stroke-width="1.2" fill="none" opacity=".9" transform="translate(200,0) scale(-1,1)">
+            <path d="M8,8 L8,28 M8,8 L28,8"/>
+            <path d="M8,8 Q14,14 20,8 Q14,14 8,20"/>
+            <circle cx="8" cy="8" r="2.5" fill="#D4AF37"/>
+            <path d="M14,4 L12,8 L16,8 Z" fill="#F5E070" stroke="none"/>
+            <path d="M4,14 L8,12 L8,16 Z" fill="#F5E070" stroke="none"/>
+          </g>
+          <g stroke="#D4AF37" stroke-width="1.2" fill="none" opacity=".9" transform="translate(0,260) scale(1,-1)">
+            <path d="M8,8 L8,28 M8,8 L28,8"/>
+            <path d="M8,8 Q14,14 20,8 Q14,14 8,20"/>
+            <circle cx="8" cy="8" r="2.5" fill="#D4AF37"/>
+          </g>
+          <g stroke="#D4AF37" stroke-width="1.2" fill="none" opacity=".9" transform="translate(200,260) scale(-1,-1)">
+            <path d="M8,8 L8,28 M8,8 L28,8"/>
+            <path d="M8,8 Q14,14 20,8 Q14,14 8,20"/>
+            <circle cx="8" cy="8" r="2.5" fill="#D4AF37"/>
+          </g>
+          <polygon points="100,2 103,7 100,12 97,7" fill="#F5E070" opacity=".8"/>
+          <polygon points="100,248 103,253 100,258 97,253" fill="#F5E070" opacity=".8"/>
+        </svg>
+        <div class="frame-border"></div>
+        <div class="event-badge">18</div>
+        <div class="event-label">
+          <span class="event-label-icon"><i class="fas fa-spa"></i></span>
+          <span class="event-label-title">18th Roses</span>
+          <span class="event-label-sub">Hover to see participants</span>
+        </div>
+      </div>
+
+      <!-- 18 BLUE BILLS -->
+      <div class="event-card swiper-slide">
+        <div class="event-photo">
+          <img src="assets/events/bills.jpg" alt="18 Blue Bills" onerror="this.style.display='none'">
+
+          <div class="event-participants">
+            <div class="participants-title">✦ 18 Blue Bills ✦</div>
+            <div class="participants-list">
+              <div class="participant-row">18th Blue Bills — Joash Castillo</div>
+              <div class="participant-row">18th Blue Bills — Pablito Nera Jr.</div>
+              <div class="participant-row">18th Blue Bills — Neo Bautista</div>
+              <div class="participant-row">18th Blue Bills — Yvette Montejo</div>
+              <div class="participant-row">18th Blue Bills — Manilyn Perea</div>
+              <div class="participant-row">18th Blue Bills — Angeline Castillo</div>
+              <div class="participant-row">18th Blue Bills — Diane Nera</div>
+              <div class="participant-row">18th Blue Bills — Eunie May Fernando</div>
+              <div class="participant-row">18th Blue Bills — Princess Irish Alcantara</div>
+              <div class="participant-row">18th Blue Bills — Anna Amparo</div>
+              <div class="participant-row">18th Blue Bills — Jhon Cyrille Batallones</div>
+              <div class="participant-row">18th Blue Bills — Ama Atinen</div>
+              <div class="participant-row">18th Blue Bills — Jhaycee Famini</div>
+              <div class="participant-row">18th Blue Bills — Erickson Sindac</div>
+              <div class="participant-row">18th Blue Bills — Clariz Millares</div>
+              <div class="participant-row">18th Blue Bills — Lorraine Flora</div>
+              <div class="participant-row">18th Blue Bills — Nerie Nartates</div>
+              <div class="participant-row">18th Blue Bills — Ninong Oben &amp; Ninang Mich</div>
+            </div>
+          </div>
+          <div class="event-shimmer"></div>
+        </div>
+        <svg class="frame-svg" viewBox="0 0 200 260" preserveAspectRatio="none">
+          <g stroke="#D4AF37" stroke-width="1.2" fill="none" opacity=".9">
+            <path d="M8,8 L8,28 M8,8 L28,8"/>
+            <path d="M8,8 Q14,14 20,8 Q14,14 8,20"/>
+            <circle cx="8" cy="8" r="2.5" fill="#D4AF37"/>
+            <path d="M14,4 L12,8 L16,8 Z" fill="#F5E070" stroke="none"/>
+            <path d="M4,14 L8,12 L8,16 Z" fill="#F5E070" stroke="none"/>
+          </g>
+          <g stroke="#D4AF37" stroke-width="1.2" fill="none" opacity=".9" transform="translate(200,0) scale(-1,1)">
+            <path d="M8,8 L8,28 M8,8 L28,8"/>
+            <path d="M8,8 Q14,14 20,8 Q14,14 8,20"/>
+            <circle cx="8" cy="8" r="2.5" fill="#D4AF37"/>
+            <path d="M14,4 L12,8 L16,8 Z" fill="#F5E070" stroke="none"/>
+            <path d="M4,14 L8,12 L8,16 Z" fill="#F5E070" stroke="none"/>
+          </g>
+          <g stroke="#D4AF37" stroke-width="1.2" fill="none" opacity=".9" transform="translate(0,260) scale(1,-1)">
+            <path d="M8,8 L8,28 M8,8 L28,8"/>
+            <path d="M8,8 Q14,14 20,8 Q14,14 8,20"/>
+            <circle cx="8" cy="8" r="2.5" fill="#D4AF37"/>
+          </g>
+          <g stroke="#D4AF37" stroke-width="1.2" fill="none" opacity=".9" transform="translate(200,260) scale(-1,-1)">
+            <path d="M8,8 L8,28 M8,8 L28,8"/>
+            <path d="M8,8 Q14,14 20,8 Q14,14 8,20"/>
+            <circle cx="8" cy="8" r="2.5" fill="#D4AF37"/>
+          </g>
+          <polygon points="100,2 103,7 100,12 97,7" fill="#F5E070" opacity=".8"/>
+          <polygon points="100,248 103,253 100,258 97,253" fill="#F5E070" opacity=".8"/>
+        </svg>
+        <div class="frame-border"></div>
+        <div class="event-badge">18</div>
+        <div class="event-label">
+          <span class="event-label-icon"><i class="fas fa-ring"></i></span>
+          <span class="event-label-title">18 Blue Bills</span>
+          <span class="event-label-sub">Hover to see participants</span>
+        </div>
+      </div>
+
+      <!-- 18th CANDLES & LETTERS -->
+      <div class="event-card swiper-slide">
+        <div class="event-photo">
+          <img src="assets/events/candles.jpg" alt="18th Candles & Letters" onerror="this.style.display='none'">
+          <div class="event-participants">
+            <div class="participants-title">✦ 18th Candles &amp; Letters ✦</div>
+            <div class="participants-list">
+              <div class="participant-row">18th Candles — Marilou Gutierrez</div>
+              <div class="participant-row">18th Candles — Marjorie Gutierrez</div>
+              <div class="participant-row">18th Candles — Paulyn Perea</div>
+              <div class="participant-row">18th Candles — Roanne Gutierrez</div>
+              <div class="participant-row">18th Candles — Rhoash Distor</div>
+              <div class="participant-row">18th Candles — Freana Castillo</div>
+              <div class="participant-row">18th Candles — Friona Castillo</div>
+              <div class="participant-row">18th Candles — Gelene Tena</div>
+              <div class="participant-row">18th Candles — Dave Gomez</div>
+              <div class="participant-row">18th Candles — Scarlet Buendicho</div>
+              <div class="participant-row">18th Candles — Marimar Gonzales</div>
+              <div class="participant-row">18th Candles — Fordlyn Crisanto</div>
+              <div class="participant-row">18th Candles — Beatrice Romaraog</div>
+              <div class="participant-row">18th Candles — Dimple Regulacion</div>
+              <div class="participant-row">18th Candles — Alyssa Portera</div>
+              <div class="participant-row">18th Candles — Arha Ariola</div>
+              <div class="participant-row">18th Candles — Angel Fate Gutierrez</div>
+              <div class="participant-row">18th Candles — Jeaneth Castillo</div>
+            </div>
+          </div>
+          <div class="event-shimmer"></div>
+        </div>
+        <svg class="frame-svg" viewBox="0 0 200 260" preserveAspectRatio="none">
+          <g stroke="#D4AF37" stroke-width="1.2" fill="none" opacity=".9">
+            <path d="M8,8 L8,28 M8,8 L28,8"/>
+            <path d="M8,8 Q14,14 20,8 Q14,14 8,20"/>
+            <circle cx="8" cy="8" r="2.5" fill="#D4AF37"/>
+            <path d="M14,4 L12,8 L16,8 Z" fill="#F5E070" stroke="none"/>
+            <path d="M4,14 L8,12 L8,16 Z" fill="#F5E070" stroke="none"/>
+          </g>
+          <g stroke="#D4AF37" stroke-width="1.2" fill="none" opacity=".9" transform="translate(200,0) scale(-1,1)">
+            <path d="M8,8 L8,28 M8,8 L28,8"/>
+            <path d="M8,8 Q14,14 20,8 Q14,14 8,20"/>
+            <circle cx="8" cy="8" r="2.5" fill="#D4AF37"/>
+            <path d="M14,4 L12,8 L16,8 Z" fill="#F5E070" stroke="none"/>
+            <path d="M4,14 L8,12 L8,16 Z" fill="#F5E070" stroke="none"/>
+          </g>
+          <g stroke="#D4AF37" stroke-width="1.2" fill="none" opacity=".9" transform="translate(0,260) scale(1,-1)">
+            <path d="M8,8 L8,28 M8,8 L28,8"/>
+            <path d="M8,8 Q14,14 20,8 Q14,14 8,20"/>
+            <circle cx="8" cy="8" r="2.5" fill="#D4AF37"/>
+          </g>
+          <g stroke="#D4AF37" stroke-width="1.2" fill="none" opacity=".9" transform="translate(200,260) scale(-1,-1)">
+            <path d="M8,8 L8,28 M8,8 L28,8"/>
+            <path d="M8,8 Q14,14 20,8 Q14,14 8,20"/>
+            <circle cx="8" cy="8" r="2.5" fill="#D4AF37"/>
+          </g>
+          <polygon points="100,2 103,7 100,12 97,7" fill="#F5E070" opacity=".8"/>
+          <polygon points="100,248 103,253 100,258 97,253" fill="#F5E070" opacity=".8"/>
+        </svg>
+        <div class="frame-border"></div>
+        <div class="event-badge">18</div>
+        <div class="event-label">
+          <span class="event-label-icon"><i class="fas fa-cake-candles"></i></span>
+          <span class="event-label-title">18th Candles &amp; Letters</span>
+          <span class="event-label-sub">Hover to see participants</span>
+        </div>
+      </div>
+
+      <!-- 18th MAKEUPS -->
+      <div class="event-card swiper-slide">
+        <div class="event-photo">
+          <img src="assets/events/makeups.jpg" alt="18th Makeups" onerror="this.style.display='none'">
+
+          <div class="event-participants">
+            <div class="participants-title">✦ 18th Makeups ✦</div>
+            <div class="participants-list">
+              <div class="participant-row">18th Makeups — Janelle Kyle Ursonal</div>
+              <div class="participant-row">18th Makeups — Vienna Rose Rosinas</div>
+              <div class="participant-row">18th Makeups — Loraine Mendoza</div>
+              <div class="participant-row">18th Makeups — Noralyn Sotero</div>
+              <div class="participant-row">18th Makeups — Jana Belizario</div>
+              <div class="participant-row">18th Makeups — Jhaizelle Pedrocillo</div>
+              <div class="participant-row">18th Makeups — Keziah Alcantara</div>
+              <div class="participant-row">18th Makeups — Janine Gutierrez</div>
+              <div class="participant-row">18th Makeups — Therese Pimentel</div>
+              <div class="participant-row">18th Makeups — Rhean Siblang</div>
+              <div class="participant-row">18th Makeups — Reyven Bitong</div>
+              <div class="participant-row">18th Makeups — Trixie Gutierrez</div>
+              <div class="participant-row">18th Makeups — Charity Venus Tuscano</div>
+              <div class="participant-row">18th Makeups — Arabelle Montejo</div>
+              <div class="participant-row">18th Makeups — Mhara Gutierrez</div>
+              <div class="participant-row">18th Makeups — Cindy Gutierrez</div>
+              <div class="participant-row">18th Makeups — Princess Bianca Gutierrez</div>
+              <div class="participant-row">18th Makeups — Hannah Nera</div>
+            </div>
+          </div>
+          <div class="event-shimmer"></div>
+        </div>
+        <svg class="frame-svg" viewBox="0 0 200 260" preserveAspectRatio="none">
+          <g stroke="#D4AF37" stroke-width="1.2" fill="none" opacity=".9">
+            <path d="M8,8 L8,28 M8,8 L28,8"/>
+            <path d="M8,8 Q14,14 20,8 Q14,14 8,20"/>
+            <circle cx="8" cy="8" r="2.5" fill="#D4AF37"/>
+            <path d="M14,4 L12,8 L16,8 Z" fill="#F5E070" stroke="none"/>
+            <path d="M4,14 L8,12 L8,16 Z" fill="#F5E070" stroke="none"/>
+          </g>
+          <g stroke="#D4AF37" stroke-width="1.2" fill="none" opacity=".9" transform="translate(200,0) scale(-1,1)">
+            <path d="M8,8 L8,28 M8,8 L28,8"/>
+            <path d="M8,8 Q14,14 20,8 Q14,14 8,20"/>
+            <circle cx="8" cy="8" r="2.5" fill="#D4AF37"/>
+            <path d="M14,4 L12,8 L16,8 Z" fill="#F5E070" stroke="none"/>
+            <path d="M4,14 L8,12 L8,16 Z" fill="#F5E070" stroke="none"/>
+          </g>
+          <g stroke="#D4AF37" stroke-width="1.2" fill="none" opacity=".9" transform="translate(200,0) scale(-1,1)">
+          </g>
+          <g stroke="#D4AF37" stroke-width="1.2" fill="none" opacity=".9" transform="translate(0,260) scale(1,-1)">
+            <path d="M8,8 L8,28 M8,8 L28,8"/>
+            <path d="M8,8 Q14,14 20,8 Q14,14 8,20"/>
+            <circle cx="8" cy="8" r="2.5" fill="#D4AF37"/>
+          </g>
+          <g stroke="#D4AF37" stroke-width="1.2" fill="none" opacity=".9" transform="translate(200,260) scale(-1,-1)">
+            <path d="M8,8 L8,28 M8,8 L28,8"/>
+            <path d="M8,8 Q14,14 20,8 Q14,14 8,20"/>
+            <circle cx="8" cy="8" r="2.5" fill="#D4AF37"/>
+          </g>
+          <polygon points="100,2 103,7 100,12 97,7" fill="#F5E070" opacity=".8"/>
+          <polygon points="100,248 103,253 100,258 97,253" fill="#F5E070" opacity=".8"/>
+        </svg>
+        <div class="frame-border"></div>
+        <div class="event-badge">18</div>
+        <div class="event-label">
+          <span class="event-label-icon"><i class="fas fa-brush"></i></span>
+          <span class="event-label-title">18th Makeups</span>
+          <span class="event-label-sub">Hover to see participants</span>
+        </div>
+      </div>
+
+      <!-- 18th TREASURE -->
+      <div class="event-card swiper-slide">
+        <div class="event-photo">
+          <img src="assets/events/treasure.jpg" alt="18th Treasure" onerror="this.style.display='none'">
+
+          <div class="event-participants">
+            <div class="participants-title">✦ 18th Treasure ✦</div>
+            <div class="participants-list">
+              <div class="participant-row">18th Treasure — Berna Gutierrez</div>
+              <div class="participant-row">18th Treasure — Wency Camara</div>
+              <div class="participant-row">18th Treasure — Ralph Ervin Estares</div>
+              <div class="participant-row">18th Treasure — Trixee Mapindan</div>
+              <div class="participant-row">18th Treasure — Alex Serrano</div>
+              <div class="participant-row">18th Treasure — Alaisa Vicente</div>
+              <div class="participant-row">18th Treasure — Mira Flor Mercado</div>
+              <div class="participant-row">18th Treasure — Maricris Astoveza</div>
+              <div class="participant-row">18th Treasure — Rogette Templanza</div>
+              <div class="participant-row">18th Treasure — Myrene Irorita</div>
+              <div class="participant-row">18th Treasure — Cyren Gutierrez</div>
+              <div class="participant-row">18th Treasure — Deden Tena</div>
+              <div class="participant-row">18th Treasure — Rhandell Mendoza</div>
+              <div class="participant-row">18th Treasure — Joana Poliquit</div>
+              <div class="participant-row">18th Treasure — Roda Ruzol-Ramos</div>
+              <div class="participant-row">18th Treasure — Jeniffer Ancheta</div>
+              <div class="participant-row">18th Treasure — Ronnie Mata</div>
+              <div class="participant-row">18th Treasure — Ena Tablang</div>
+            </div>
+          </div>
+          <div class="event-shimmer"></div>
+        </div>
+        <svg class="frame-svg" viewBox="0 0 200 260" preserveAspectRatio="none">
+          <g stroke="#D4AF37" stroke-width="1.2" fill="none" opacity=".9">
+            <path d="M8,8 L8,28 M8,8 L28,8"/>
+            <path d="M8,8 Q14,14 20,8 Q14,14 8,20"/>
+            <circle cx="8" cy="8" r="2.5" fill="#D4AF37"/>
+            <path d="M14,4 L12,8 L16,8 Z" fill="#F5E070" stroke="none"/>
+            <path d="M4,14 L8,12 L8,16 Z" fill="#F5E070" stroke="none"/>
+          </g>
+          <g stroke="#D4AF37" stroke-width="1.2" fill="none" opacity=".9" transform="translate(200,0) scale(-1,1)">
+            <path d="M8,8 L8,28 M8,8 L28,8"/>
+            <path d="M8,8 Q14,14 20,8 Q14,14 8,20"/>
+            <circle cx="8" cy="8" r="2.5" fill="#D4AF37"/>
+            <path d="M14,4 L12,8 L16,8 Z" fill="#F5E070" stroke="none"/>
+            <path d="M4,14 L8,12 L8,16 Z" fill="#F5E070" stroke="none"/>
+          </g>
+          <g stroke="#D4AF37" stroke-width="1.2" fill="none" opacity=".9" transform="translate(0,260) scale(1,-1)">
+            <path d="M8,8 L8,28 M8,8 L28,8"/>
+            <path d="M8,8 Q14,14 20,8 Q14,14 8,20"/>
+            <circle cx="8" cy="8" r="2.5" fill="#D4AF37"/>
+          </g>
+          <g stroke="#D4AF37" stroke-width="1.2" fill="none" opacity=".9" transform="translate(200,260) scale(-1,-1)">
+            <path d="M8,8 L8,28 M8,8 L28,8"/>
+            <path d="M8,8 Q14,14 20,8 Q14,14 8,20"/>
+            <circle cx="8" cy="8" r="2.5" fill="#D4AF37"/>
+          </g>
+          <polygon points="100,2 103,7 100,12 97,7" fill="#F5E070" opacity=".8"/>
+          <polygon points="100,248 103,253 100,258 97,253" fill="#F5E070" opacity=".8"/>
+        </svg>
+        <div class="frame-border"></div>
+        <div class="event-badge">18</div>
+        <div class="event-label">
+          <span class="event-label-icon"><i class="fas fa-gem"></i></span>
+          <span class="event-label-title">18th Treasure</span>
+          <span class="event-label-sub">Hover to see participants</span>
+        </div>
+      </div>
+
+      <!-- 18th GIFTS -->
+      <div class="event-card swiper-slide">
+        <div class="event-photo">
+          <img src="assets/events/gifts.jpg" alt="18th Gifts" onerror="this.style.display='none'">
+
+          <div class="event-participants">
+            <div class="participants-title">✦ 18th Gifts ✦</div>
+            <div class="participants-list">
+              <div class="participant-row">18th Gifts — Aira Rellores</div>
+              <div class="participant-row">18th Gifts — Christine Mae Plata</div>
+              <div class="participant-row">18th Gifts — Hazel Mapindan</div>
+              <div class="participant-row">18th Gifts — Krizza Sheene Barros</div>
+              <div class="participant-row">18th Gifts — Amor Gutierrez</div>
+              <div class="participant-row">18th Gifts — Sheena Gutierrez</div>
+              <div class="participant-row">18th Gifts — Gellie Villaganas</div>
+              <div class="participant-row">18th Gifts — Ikang Villaflor</div>
+              <div class="participant-row">18th Gifts — Dennise Ann Serrano</div>
+              <div class="participant-row">18th Gifts — Mikhael Miranda</div>
+              <div class="participant-row">18th Gifts — Jun Philip Gonzalez</div>
+              <div class="participant-row">18th Gifts — Lore John Olayres</div>
+              <div class="participant-row">18th Gifts — Lady Dianne Orqueza</div>
+              <div class="participant-row">18th Gifts — Issa Belizario</div>
+              <div class="participant-row">18th Gifts — Marnie Orolfo</div>
+              <div class="participant-row">18th Gifts — Chinky Lumasac</div>
+              <div class="participant-row">18th Gifts — Yzabelle Dela Torre</div>
+              <div class="participant-row">18th Gifts — Ace Yamo</div>
+            </div>
+          </div>
+          <div class="event-shimmer"></div>
+        </div>
+        <svg class="frame-svg" viewBox="0 0 200 260" preserveAspectRatio="none">
+          <g stroke="#D4AF37" stroke-width="1.2" fill="none" opacity=".9">
+            <path d="M8,8 L8,28 M8,8 L28,8"/>
+            <path d="M8,8 Q14,14 20,8 Q14,14 8,20"/>
+            <circle cx="8" cy="8" r="2.5" fill="#D4AF37"/>
+            <path d="M14,4 L12,8 L16,8 Z" fill="#F5E070" stroke="none"/>
+            <path d="M4,14 L8,12 L8,16 Z" fill="#F5E070" stroke="none"/>
+          </g>
+          <g stroke="#D4AF37" stroke-width="1.2" fill="none" opacity=".9" transform="translate(200,0) scale(-1,1)">
+            <path d="M8,8 L8,28 M8,8 L28,8"/>
+            <path d="M8,8 Q14,14 20,8 Q14,14 8,20"/>
+            <circle cx="8" cy="8" r="2.5" fill="#D4AF37"/>
+            <path d="M14,4 L12,8 L16,8 Z" fill="#F5E070" stroke="none"/>
+            <path d="M4,14 L8,12 L8,16 Z" fill="#F5E070" stroke="none"/>
+          </g>
+          <g stroke="#D4AF37" stroke-width="1.2" fill="none" opacity=".9" transform="translate(0,260) scale(1,-1)">
+            <path d="M8,8 L8,28 M8,8 L28,8"/>
+            <path d="M8,8 Q14,14 20,8 Q14,14 8,20"/>
+            <circle cx="8" cy="8" r="2.5" fill="#D4AF37"/>
+          </g>
+          <g stroke="#D4AF37" stroke-width="1.2" fill="none" opacity=".9" transform="translate(200,260) scale(-1,-1)">
+            <path d="M8,8 L8,28 M8,8 L28,8"/>
+            <path d="M8,8 Q14,14 20,8 Q14,14 8,20"/>
+            <circle cx="8" cy="8" r="2.5" fill="#D4AF37"/>
+          </g>
+          <polygon points="100,2 103,7 100,12 97,7" fill="#F5E070" opacity=".8"/>
+          <polygon points="100,248 103,253 100,258 97,253" fill="#F5E070" opacity=".8"/>
+        </svg>
+        <div class="frame-border"></div>
+        <div class="event-badge">18</div>
+        <div class="event-label">
+          <span class="event-label-icon"><i class="fas fa-gift"></i></span>
+          <span class="event-label-title">18th Gifts</span>
+          <span class="event-label-sub">Hover to see participants</span>
+        </div>
+      </div>
+
+      <!-- 18th SHOTS -->
+      <div class="event-card swiper-slide">
+        <div class="event-photo">
+          <img src="assets/events/shots.jpg" alt="18th Shots" onerror="this.style.display='none'">
+
+          <div class="event-participants">
+            <div class="participants-title">✦ 18th Shots ✦</div>
+            <div class="participants-list">
+              <div class="participant-row">18th Shots — Joseph Sindac</div>
+              <div class="participant-row">18th Shots — Horielle Felix</div>
+              <div class="participant-row">18th Shots — Jhay Hermo</div>
+              <div class="participant-row">18th Shots — Bingbong Mingua</div>
+              <div class="participant-row">18th Shots — Abe Salvador</div>
+              <div class="participant-row">18th Shots — Kevin Dela Torre</div>
+              <div class="participant-row">18th Shots — Ems Caballes</div>
+              <div class="participant-row">18th Shots — Patrick Ballesteros</div>
+              <div class="participant-row">18th Shots — Robert Barrameda</div>
+              <div class="participant-row">18th Shots — Jojo Empana</div>
+              <div class="participant-row">18th Shots — Rogie Bitong</div>
+              <div class="participant-row">18th Shots — Victor Quizana</div>
+              <div class="participant-row">18th Shots — Riley Amarillo</div>
+              <div class="participant-row">18th Shots — Marc Jefferson Ancheta</div>
+              <div class="participant-row">18th Shots — King Juntilla</div>
+              <div class="participant-row">18th Shots — Roarc Ebarle</div>
+              <div class="participant-row">18th Shots — Mark Tapada</div>
+              <div class="participant-row">18th Shots — Lord Nera</div>
+            </div>
+          </div>
+          <div class="event-shimmer"></div>
+        </div>
+        <svg class="frame-svg" viewBox="0 0 200 260" preserveAspectRatio="none">
+          <g stroke="#D4AF37" stroke-width="1.2" fill="none" opacity=".9">
+            <path d="M8,8 L8,28 M8,8 L28,8"/>
+            <path d="M8,8 Q14,14 20,8 Q14,14 8,20"/>
+            <circle cx="8" cy="8" r="2.5" fill="#D4AF37"/>
+            <path d="M14,4 L12,8 L16,8 Z" fill="#F5E070" stroke="none"/>
+            <path d="M4,14 L8,12 L8,16 Z" fill="#F5E070" stroke="none"/>
+          </g>
+          <g stroke="#D4AF37" stroke-width="1.2" fill="none" opacity=".9" transform="translate(200,0) scale(-1,1)">
+            <path d="M8,8 L8,28 M8,8 L28,8"/>
+            <path d="M8,8 Q14,14 20,8 Q14,14 8,20"/>
+            <circle cx="8" cy="8" r="2.5" fill="#D4AF37"/>
+            <path d="M14,4 L12,8 L16,8 Z" fill="#F5E070" stroke="none"/>
+            <path d="M4,14 L8,12 L8,16 Z" fill="#F5E070" stroke="none"/>
+          </g>
+          <g stroke="#D4AF37" stroke-width="1.2" fill="none" opacity=".9" transform="translate(0,260) scale(1,-1)">
+            <path d="M8,8 L8,28 M8,8 L28,8"/>
+            <path d="M8,8 Q14,14 20,8 Q14,14 8,20"/>
+            <circle cx="8" cy="8" r="2.5" fill="#D4AF37"/>
+          </g>
+          <g stroke="#D4AF37" stroke-width="1.2" fill="none" opacity=".9" transform="translate(200,260) scale(-1,-1)">
+            <path d="M8,8 L8,28 M8,8 L28,8"/>
+            <path d="M8,8 Q14,14 20,8 Q14,14 8,20"/>
+            <circle cx="8" cy="8" r="2.5" fill="#D4AF37"/>
+          </g>
+          <polygon points="100,2 103,7 100,12 97,7" fill="#F5E070" opacity=".8"/>
+          <polygon points="100,248 103,253 100,258 97,253" fill="#F5E070" opacity=".8"/>
+        </svg>
+        <div class="frame-border"></div>
+        <div class="event-badge">18</div>
+        <div class="event-label">
+          <span class="event-label-icon"><i class="fas fa-wine-glass"></i></span>
+          <span class="event-label-title">18th Shots</span>
+          <span class="event-label-sub">Hover to see participants</span>
+        </div>
+      </div><!-- /events-card swiper-slide end -->
+        </div><!-- /events-grid swiper-wrapper -->
+      </div><!-- /events-swiper -->
+      <div class="events-nav-btn events-prev"><i class="fas fa-chevron-left"></i></div>
+      <div class="events-nav-btn events-next"><i class="fas fa-chevron-right"></i></div>
+    </div><!-- /events-carousel-wrap -->
+  </section>
+
+  <section id="gallery">
+    <p class="sec-label">✦ The Mood ✦</p>
+    <h2 class="sec-title">Purple Magic</h2>
+    <p class="sec-sub">Elegance, glam &amp; a night full of memories</p>
+    <div class="pm-container">
+      <div class="swiper purple-magic-swiper">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide" data-title="A Royal Entrance" data-desc="The night begins with elegance and grace, setting the tone for a magical evening."><img src="assets/gallery/18.jpg" alt="purple-magic"></div>
+          <div class="swiper-slide" data-title="Radiant in Purple" data-desc="A moment of quiet anticipation before the grand celebration unfolds."><img src="assets/gallery/100.jpg" alt="purple-magic"></div>
+          <div class="swiper-slide" data-title="The Debutante" data-desc="Glowing under the starlight, ready to step into a new chapter."><img src="assets/gallery/67.jpg" alt="purple-magic"></div>
+          <div class="swiper-slide" data-title="Elegance Redefined" data-desc="Every detail crafted to perfection, reflecting true inner beauty."><img src="assets/gallery/34.jpg" alt="purple-magic"></div>
+          <div class="swiper-slide" data-title="A Glimpse of Magic" data-desc="Memories that will last a lifetime, captured in a single fleeting moment."><img src="assets/gallery/23.jpg" alt="purple-magic"></div>
+          <div class="swiper-slide" data-title="Star of the Night" data-desc="Shining brighter than the constellations, the center of everyone's world."><img src="assets/gallery/55.jpg" alt="purple-magic"></div>
+          <div class="swiper-slide" data-title="Graceful Charm" data-desc="A portrait of youth, beauty, and undeniable confidence."><img src="assets/gallery/68.jpg" alt="purple-magic"></div>
+          <div class="swiper-slide" data-title="The Grand Gown" data-desc="Swathed in layers of amethyst and stardust, a vision in purple."><img src="assets/gallery/53.jpg" alt="purple-magic"></div>
+          <div class="swiper-slide" data-title="Picture Perfect" data-desc="A candid smile capturing the pure, unadulterated joy of turning eighteen."><img src="assets/gallery/45.jpg" alt="purple-magic"></div>
+          <div class="swiper-slide" data-title="Purple Majesty" data-desc="A royal hue for a royal celebration, commanding the room with elegance."><img src="assets/gallery/52.jpg" alt="purple-magic"></div>
+          <div class="swiper-slide" data-title="Unforgettable Night" data-desc="Soaking in the love and laughter of family and cherished friends."><img src="assets/gallery/12.jpg" alt="purple-magic"></div>  
+          <div class="swiper-slide" data-title="Pure Joy" data-desc="Surrounded by loved ones, every second is a treasure to hold onto."><img src="assets/gallery/21.jpg" alt="purple-magic"></div>
+          <div class="swiper-slide" data-title="Enchanted Evening" data-desc="Where fairy tales come to life and dreams take flight into reality."><img src="assets/gallery/30.jpg" alt="purple-magic"></div>
+          <div class="swiper-slide" data-title="Youthful Glow" data-desc="Stepping into a new chapter with bright eyes and a heart full of hope."><img src="assets/gallery/33.jpg" alt="purple-magic"></div>
+          <div class="swiper-slide" data-title="Dazzling Smile" data-desc="Lighting up the entire room, spreading warmth to everyone present."><img src="assets/gallery/43.jpg" alt="purple-magic"></div>
+          <div class="swiper-slide" data-title="A Dream Realized" data-desc="The perfect dress for the perfect night, a vision brought to life."><img src="assets/gallery/74.jpg" alt="purple-magic"></div>
+          <div class="swiper-slide" data-title="Midnight Sparkle" data-desc="Twinkling details catching the light, making the night truly magical."><img src="assets/gallery/67.jpg" alt="purple-magic"></div>
+          <div class="swiper-slide" data-title="Poised & Beautiful" data-desc="A stunning debut, walking with the grace of a modern-day princess."><img src="assets/gallery/59.jpg" alt="purple-magic"></div>
+          <div class="swiper-slide" data-title="Magical Aura" data-desc="A mystical vibe surrounding the debutante, captivating all who see her."><img src="assets/gallery/61.jpg" alt="purple-magic"></div>
+          <div class="swiper-slide" data-title="The Beginning" data-desc="Just the start of a beautiful journey into adulthood and beyond."><img src="assets/gallery/88.jpg" alt="purple-magic"></div>
+        </div>
+      </div>
+      <div class="pm-info">
+        <h3 id="pm-title">A Royal Entrance</h3>
+        <p id="pm-desc">The night begins with elegance and grace, setting the tone for a magical evening.</p>
+        <button class="pm-gallery-btn" onclick="toggleGallery()">View Full Gallery ✦</button>
+      </div>
+    </div>
+  </section>
+
+  <section id="dresscode">
+    <div class="dc-title">✦ Dress Code ✦</div>
+    <div class="dc-val">Formal — Purple &amp; Black</div>
+    <div class="dc-tap">✦ tap for details ✦</div>
+
+    <div class="dress-showcase" onclick="openModal('dress-modal')">
+      <div class="dress-figure">
+        <div class="dress-silhouette">
+          <div class="dress-glow" style="background:radial-gradient(circle,#9B1FE8,transparent 70%)"></div>
+          <svg class="dress-svg" viewBox="0 0 130 200" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#7B2FBE"/>
+                <stop offset="50%" stop-color="#4B0082"/>
+                <stop offset="100%" stop-color="#2D0057"/>
+              </linearGradient>
+              <linearGradient id="g1shine" x1="0" y1="0" x2="1" y2="0">
+                <stop offset="0%" stop-color="rgba(255,255,255,0)"/>
+                <stop offset="40%" stop-color="rgba(255,255,255,.18)"/>
+                <stop offset="100%" stop-color="rgba(255,255,255,0)"/>
+              </linearGradient>
+              <radialGradient id="g1sparkle" cx="50%" cy="30%">
+                <stop offset="0%" stop-color="rgba(245,224,112,.3)"/>
+                <stop offset="100%" stop-color="rgba(245,224,112,0)"/>
+              </radialGradient>
+              <filter id="glow1">
+                <feGaussianBlur stdDeviation="2" result="blur"/>
+                <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+              </filter>
+            </defs>
+            <ellipse cx="65" cy="38" rx="18" ry="22" fill="#F5D5D5" opacity=".9"/>
+            <ellipse cx="65" cy="14" rx="12" ry="13" fill="#F5D5D5" opacity=".85"/>
+            <path d="M53,10 Q58,2 65,2 Q72,2 77,10 Q80,18 78,24 Q73,14 65,14 Q57,14 52,24 Q50,18 53,10Z" fill="#2C1810" opacity=".9"/>
+            <path d="M55,4 L58,0 L62,5 L65,1 L68,5 L72,0 L75,4 L73,10 L57,10 Z" fill="#D4AF37" opacity=".95" filter="url(#glow1)"/>
+            <circle cx="58" cy="1" r="1.5" fill="#F5E070"/>
+            <circle cx="65" cy="0" r="1.5" fill="#F5E070"/>
+            <circle cx="72" cy="1" r="1.5" fill="#F5E070"/>
+            <path d="M42,44 Q50,36 65,40 Q80,36 88,44 L85,52 Q74,46 65,48 Q56,46 45,52 Z" fill="url(#g1)"/>
+            <path d="M45,52 Q56,46 65,48 Q74,46 85,52 L82,78 Q74,74 65,75 Q56,74 48,78 Z" fill="url(#g1)"/>
+            <path d="M45,52 Q56,46 65,48 Q74,46 85,52 L82,78 Q74,74 65,75 Q56,74 48,78 Z" fill="url(#g1sparkle)"/>
+            <path d="M52,56 Q65,54 78,56" stroke="rgba(245,224,112,.6)" stroke-width=".8" fill="none"/>
+            <path d="M50,62 Q65,60 80,62" stroke="rgba(245,224,112,.4)" stroke-width=".8" fill="none"/>
+            <circle cx="65" cy="55" r="1.2" fill="#F5E070" opacity=".8"/>
+            <circle cx="60" cy="58" r=".9" fill="#F5E070" opacity=".6"/>
+            <circle cx="70" cy="58" r=".9" fill="#F5E070" opacity=".6"/>
+            <path d="M48,78 Q65,74 82,78 L83,84 Q65,80 47,84 Z" fill="#D4AF37" opacity=".7"/>
+            <path d="M47,84 Q30,120 10,200 L120,200 Q100,120 83,84 Q65,80 47,84 Z" fill="url(#g1)"/>
+            <path d="M47,84 Q30,120 10,200 L120,200 Q100,120 83,84 Q65,80 47,84 Z" fill="url(#g1shine)"/>
+            <path d="M52,100 Q65,96 78,100 Q90,140 105,190 L115,200 Q95,148 80,100 Q65,96 50,100 Q35,148 15,200 L25,200 Q40,140 52,100 Z" fill="rgba(200,164,212,.15)"/>
+            <path d="M55,120 Q65,118 75,120 Q83,150 90,185 L100,200 Q88,157 78,124 Q65,120 52,124 Q42,157 30,200 L40,190 Q47,150 55,120 Z" fill="rgba(255,255,255,.06)"/>
+            <circle cx="40" cy="140" r="1.5" fill="#F5E070" opacity=".7"/>
+            <circle cx="90" cy="150" r="1.5" fill="#F5E070" opacity=".5"/>
+            <circle cx="55" cy="170" r="1" fill="#F5E070" opacity=".6"/>
+            <circle cx="78" cy="165" r="1" fill="#F5E070" opacity=".5"/>
+            <circle cx="30" cy="175" r="1.2" fill="#C8A4D4" opacity=".8"/>
+            <circle cx="100" cy="170" r="1.2" fill="#C8A4D4" opacity=".7"/>
+            <ellipse cx="46" cy="49" rx="8" ry="5" fill="#6B1EA0" opacity=".8" transform="rotate(-15,46,49)"/>
+            <ellipse cx="84" cy="49" rx="8" ry="5" fill="#6B1EA0" opacity=".8" transform="rotate(15,84,49)"/>
+          </svg>
+        </div>
+        <div class="dress-label">For the Ladies</div>
+        <div class="dress-name">Ball Gown</div>
+      </div>
+
+      <div class="dress-or"><span>✦</span><span style="writing-mode:vertical-rl;letter-spacing:5px">OR</span><span>✦</span></div>
+
+      <div class="dress-figure">
+        <div class="dress-silhouette">
+          <div class="dress-glow" style="background:radial-gradient(circle,#4B0082,transparent 70%)"></div>
+          <svg class="dress-svg" viewBox="0 0 130 200" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="g2" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#1A1A2E"/>
+                <stop offset="100%" stop-color="#0D0D1F"/>
+              </linearGradient>
+              <linearGradient id="g2lapel" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#2A0A4A"/>
+                <stop offset="100%" stop-color="#180630"/>
+              </linearGradient>
+              <filter id="glow2">
+                <feGaussianBlur stdDeviation="2" result="blur"/>
+                <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+              </filter>
+            </defs>
+            <ellipse cx="65" cy="14" rx="12" ry="13" fill="#F5D5D5" opacity=".85"/>
+            <path d="M54,8 Q59,2 65,2 Q71,2 76,8 Q78,13 76,16 Q71,10 65,10 Q59,10 54,16 Q52,13 54,8Z" fill="#2C1810" opacity=".9"/>
+            <path d="M56,28 L65,35 L74,28 L72,40 L65,37 L58,40 Z" fill="white" opacity=".9"/>
+            <path d="M60,32 L65,35 L60,38 Z" fill="#4B0082" opacity=".9"/>
+            <path d="M70,32 L65,35 L70,38 Z" fill="#4B0082" opacity=".9"/>
+            <circle cx="65" cy="35" r="2" fill="#D4AF37" opacity=".9"/>
+            <path d="M40,42 L54,38 L65,44 L76,38 L90,42 L92,120 L38,120 Z" fill="url(#g2)"/>
+            <path d="M54,38 L65,44 L58,68 L44,60 Z" fill="url(#g2lapel)"/>
+            <path d="M76,38 L65,44 L72,68 L86,60 Z" fill="url(#g2lapel)"/>
+            <path d="M54,38 L65,44 L76,38 L90,42 L88,80 Q80,76 65,78 Q50,76 42,80 L40,42 Z" fill="rgba(255,255,255,.04)"/>
+            <circle cx="65" cy="72" r="2" fill="#D4AF37" opacity=".6" filter="url(#glow2)"/>
+            <circle cx="65" cy="82" r="2" fill="#D4AF37" opacity=".5"/>
+            <circle cx="65" cy="92" r="2" fill="#D4AF37" opacity=".4"/>
+            <path d="M82,52 L88,50 L89,58 L83,56 Z" fill="#9B1FE8" opacity=".8"/>
+            <path d="M38,120 L92,120 L94,200 L72,200 L65,155 L58,200 L36,200 Z" fill="#0D0D1F"/>
+            <line x1="65" y1="120" x2="65" y2="155" stroke="rgba(75,0,130,.4)" stroke-width="1.5"/>
+            <ellipse cx="55" cy="199" rx="14" ry="4" fill="#1A1A1A"/>
+            <ellipse cx="75" cy="199" rx="14" ry="4" fill="#1A1A1A"/>
+            <path d="M40,42 L44,60 L58,68" stroke="#4B0082" stroke-width="1.5" fill="none" opacity=".8"/>
+            <path d="M90,42 L86,60 L72,68" stroke="#4B0082" stroke-width="1.5" fill="none" opacity=".8"/>
+          </svg>
+        </div>
+        <div class="dress-label">For the Gents</div>
+        <div class="dress-name">Formal Suit</div>
+      </div>
+    </div>
+
+    <div class="dc-swatches" onclick="openModal('dress-modal')">
+      <div class="swatch-block">
+        <div class="swatch" style="background:#4B0082;box-shadow:0 0 12px #4B008266"></div>
+        <div class="swatch-name">Royal Violet</div>
+      </div>
+      <div class="swatch-block">
+        <div class="swatch" style="background:#7B2FBE;box-shadow:0 0 12px #7B2FBE66"></div>
+        <div class="swatch-name">Amethyst</div>
+      </div>
+      <div class="swatch-block">
+        <div class="swatch" style="background:#C8A4D4;box-shadow:0 0 12px #C8A4D466"></div>
+        <div class="swatch-name">Lavender</div>
+      </div>
+      <div class="swatch-block">
+        <div class="swatch" style="background:#1A1A2E;box-shadow:0 0 12px #1A1A2E88"></div>
+        <div class="swatch-name">Deep Navy</div>
+      </div>
+      <div class="swatch-block">
+        <div class="swatch" style="background:#111111;box-shadow:0 0 12px #111"></div>
+        <div class="swatch-name">Onyx Black</div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="foot-logo">Jamaica Gutierrez</div>
+    <p class="foot-text">18th Birthday · July 18, 2026 · Maria, Aurora · With love &amp; glitter ✦</p>
+  </footer>
+</div>
+
+<!-- INVITATION CARD MODAL -->
+<div id="card-wrap">
+  <div id="backdrop" onclick="closeCard()"></div>
+  <div id="card">
+    <button class="xbtn card-xbtn" onclick="closeCard()"><i class="fas fa-times"></i></button>
+    <div class="gold-bar top"></div>
+    <img class="card-hero" src="assets/events/1.png" alt="" onclick="openFullscreen('assets/events/1.png')" onerror="this.src='assets/events/1.png'" style="cursor:pointer">
+    <div class="card-image-count">1 / 1</div>
+    <div class="cc">
+      <p class="c-ey">You are cordially invited</p>
+      <div class="c-script">Turning</div>
+      <span class="c-18">18</span>
+      <p class="c-sub">A night to remember, forever</p>
+      <div class="cdiv"><span class="cdl l"></span><span class="cgem"></span><span class="cdl r"></span></div>
+      <p class="c-cel">Celebrating</p>
+      <p class="c-name">Jamaica Gutierrez</p>
+      <div class="c-strip">
+        <img src="assets/gallery/46.jpg" alt="gallery image">
+        <img src="assets/gallery/85.jpg" alt="gallery image">
+        <img src="assets/gallery/89.jpg" alt="gallery image">
+        <img src="assets/gallery/101.jpg" alt="gallery image">
+      </div>
+      <div class="c-dg">
+        <div class="c-db"><div class="c-di"><i class="fas fa-calendar-days"></i></div><div class="c-dl">Date</div><div class="c-dv">July 18<br>2026</div></div>
+        <div class="c-db"><div class="c-di"><i class="fas fa-clock"></i></div><div class="c-dl">Time</div><div class="c-dv">4:30 PM<br>Doors at 4:00</div></div>
+        <div class="c-db"><div class="c-di"><i class="fas fa-map-pin"></i></div><div class="c-dl">Venue</div><div class="c-dv">Sta. Lucia<br>Maria, Aurora</div></div>
+      </div>
+      <div class="c-rsvp">
+        <p>Dress code: <strong>Formal — Purple &amp; Black</strong><br>RSVP by <strong>July 12, 2026</strong></p>
+        <button class="rbtn">✦ RSVP Now ✦</button>
+      </div>
+      <p class="c-foot">With love &amp; glitter · Maica's 18th</p>
+    </div>
+    <div class="gold-bar bot"></div>
+  </div>
+</div>
+
+<!-- CALENDAR MODAL -->
+<div class="modal-overlay" id="cal-modal">
+  <div class="modal-box">
+    <button class="xbtn" onclick="closeModal('cal-modal')"><i class="fas fa-times"></i></button>
+    <div class="gold-bar top"></div>
+    <div class="modal-inner">
+      <div class="modal-title">July 2026</div>
+      <div class="modal-sub">✦ Mark the Date ✦</div>
+      <div class="cal-wrap">
+        <div class="cal-grid">
+          <div class="cal-dow">Sun</div><div class="cal-dow">Mon</div><div class="cal-dow">Tue</div>
+          <div class="cal-dow">Wed</div><div class="cal-dow">Thu</div><div class="cal-dow">Fri</div><div class="cal-dow">Sat</div>
+          <div class="cal-day other"><div class="cal-day-inner">28</div></div>
+          <div class="cal-day other"><div class="cal-day-inner">29</div></div>
+          <div class="cal-day other"><div class="cal-day-inner">30</div></div>
+          <div class="cal-day"><div class="cal-day-inner">1</div></div>
+          <div class="cal-day"><div class="cal-day-inner">2</div></div>
+          <div class="cal-day"><div class="cal-day-inner">3</div></div>
+          <div class="cal-day"><div class="cal-day-inner">4</div></div>
+          <div class="cal-day"><div class="cal-day-inner">5</div></div>
+          <div class="cal-day"><div class="cal-day-inner">6</div></div>
+          <div class="cal-day"><div class="cal-day-inner">7</div></div>
+          <div class="cal-day"><div class="cal-day-inner">8</div></div>
+          <div class="cal-day"><div class="cal-day-inner">9</div></div>
+          <div class="cal-day"><div class="cal-day-inner">10</div></div>
+          <div class="cal-day"><div class="cal-day-inner">11</div></div>
+          <div class="cal-day"><div class="cal-day-inner">12</div></div>
+          <div class="cal-day"><div class="cal-day-inner">13</div></div>
+          <div class="cal-day"><div class="cal-day-inner">14</div></div>
+          <div class="cal-day"><div class="cal-day-inner">15</div></div>
+          <div class="cal-day"><div class="cal-day-inner">16</div></div>
+          <div class="cal-day"><div class="cal-day-inner">17</div></div>
+          <div class="cal-day event-day"><div class="cal-day-inner">18</div><div class="cal-ring"></div></div>
+          <div class="cal-day"><div class="cal-day-inner">19</div></div>
+          <div class="cal-day"><div class="cal-day-inner">20</div></div>
+          <div class="cal-day"><div class="cal-day-inner">21</div></div>
+          <div class="cal-day"><div class="cal-day-inner">22</div></div>
+          <div class="cal-day"><div class="cal-day-inner">23</div></div>
+          <div class="cal-day"><div class="cal-day-inner">24</div></div>
+          <div class="cal-day"><div class="cal-day-inner">25</div></div>
+          <div class="cal-day"><div class="cal-day-inner">26</div></div>
+          <div class="cal-day"><div class="cal-day-inner">27</div></div>
+          <div class="cal-day"><div class="cal-day-inner">28</div></div>
+          <div class="cal-day"><div class="cal-day-inner">29</div></div>
+          <div class="cal-day"><div class="cal-day-inner">30</div></div>
+          <div class="cal-day"><div class="cal-day-inner">31</div></div>
+          <div class="cal-day other"><div class="cal-day-inner">1</div></div>
+        </div>
+        <div class="cal-event-note">
+          <p>Jamaica's 18th Birthday ✦</p>
+          <span>Saturday, July 18, 2026 · 4:30 PM</span>
+        </div>
+        <div class="countdown-strip">
+          <div class="cd-pill"><div class="num" id="cc-d">--</div><div class="lbl">Days</div></div>
+          <div class="cd-pill"><div class="num" id="cc-h">--</div><div class="lbl">Hours</div></div>
+          <div class="cd-pill"><div class="num" id="cc-m">--</div><div class="lbl">Minutes</div></div>
+          <div class="cd-pill"><div class="num" id="cc-s">--</div><div class="lbl">Seconds</div></div>
+        </div>
+      </div>
+    </div>
+    <div class="gold-bar bot"></div>
+  </div>
+</div>
+
+<!-- CLOCK MODAL -->
+<div class="modal-overlay" id="clock-modal">
+  <div class="modal-box">
+    <button class="xbtn" onclick="closeModal('clock-modal')"><i class="fas fa-times"></i></button>
+    <div class="gold-bar top"></div>
+    <div class="modal-inner">
+      <div class="modal-title">The Hour</div>
+      <div class="modal-sub">✦ Event Timings ✦</div>
+      <div class="clock-scene">
+        <div style="position:relative">
+          <svg class="clock-bells" viewBox="0 0 80 36">
+            <path d="M24,36 Q28,20 40,14 Q52,20 56,36" fill="#2A2A40" stroke="rgba(212,175,55,.5)" stroke-width="1.5"/>
+            <circle cx="30" cy="8" r="7" fill="#2A2A40" stroke="rgba(212,175,55,.5)" stroke-width="1.5"/>
+            <circle cx="50" cy="8" r="7" fill="#2A2A40" stroke="rgba(212,175,55,.5)" stroke-width="1.5"/>
+            <circle cx="30" cy="8" r="3" fill="#D4AF37" opacity=".7"/>
+            <circle cx="50" cy="8" r="3" fill="#D4AF37" opacity=".7"/>
+          </svg>
+          <div class="clock-outer" id="live-clock">
+            <div class="clock-rim"></div>
+            <div class="clock-number" style="top:8%;left:50%;transform:translate(-50%,-50%)">XII</div>
+            <div class="clock-number" style="top:50%;right:6%;transform:translateY(-50%)">III</div>
+            <div class="clock-number" style="bottom:10%;left:50%;transform:translate(-50%,50%)">VI</div>
+            <div class="clock-number" style="top:50%;left:6%;transform:translateY(-50%)">IX</div>
+            <div class="clock-number" style="font-size:8px;top:20%;right:22%;transform:translate(50%,-50%);color:rgba(212,175,55,.5)">I</div>
+            <div class="clock-number" style="font-size:8px;top:20%;left:22%;transform:translate(-50%,-50%);color:rgba(212,175,55,.5)">XI</div>
+            <div class="clock-number" style="font-size:8px;top:38%;right:10%;transform:translate(50%,-50%);color:rgba(212,175,55,.5)">II</div>
+            <div class="clock-number" style="font-size:8px;top:38%;left:10%;transform:translate(-50%,-50%);color:rgba(212,175,55,.5)">X</div>
+            <div class="clock-number" style="font-size:8px;bottom:38%;right:10%;transform:translate(50%,50%);color:rgba(212,175,55,.5)">IV</div>
+            <div class="clock-number" style="font-size:8px;bottom:38%;left:10%;transform:translate(-50%,50%);color:rgba(212,175,55,.5)">VIII</div>
+            <div class="clock-number" style="font-size:8px;bottom:20%;right:22%;transform:translate(50%,50%);color:rgba(212,175,55,.5)">V</div>
+            <div class="clock-number" style="font-size:8px;bottom:20%;left:22%;transform:translate(-50%,50%);color:rgba(212,175,55,.5)">VII</div>
+            <div class="clock-ornament-top" style="left:50%;transform:translateX(-50%)">Jamaica</div>
+            <div class="clock-ornament" style="left:50%;transform:translateX(-50%)">MARIA · AURORA</div>
+            <svg style="position:absolute;inset:0;width:100%;height:100%" viewBox="0 0 240 240">
+              <g stroke="rgba(212,175,55,.25)" stroke-width="1">
+                <line x1="120" y1="18" x2="120" y2="26"/><line x1="120" y1="214" x2="120" y2="222"/>
+                <line x1="18" y1="120" x2="26" y2="120"/><line x1="214" y1="120" x2="222" y2="120"/>
+              </g>
+              <g stroke="rgba(212,175,55,.12)" stroke-width=".8">
+                <line x1="158" y1="22" x2="155" y2="30"/><line x1="194" y1="46" x2="188" y2="52"/>
+                <line x1="218" y1="82" x2="210" y2="85"/><line x1="218" y1="158" x2="210" y2="155"/>
+                <line x1="194" y1="194" x2="188" y2="188"/><line x1="158" y1="218" x2="155" y2="210"/>
+                <line x1="82" y1="218" x2="85" y2="210"/><line x1="46" y1="194" x2="52" y2="188"/>
+                <line x1="22" y1="158" x2="30" y2="155"/><line x1="22" y1="82" x2="30" y2="85"/>
+                <line x1="46" y1="46" x2="52" y2="52"/><line x1="82" y1="22" x2="85" y2="30"/>
+              </g>
+            </svg>
+            <div class="clock-hand hour-hand" id="hand-h"></div>
+            <div class="clock-hand min-hand" id="hand-m"></div>
+            <div class="clock-hand sec-hand" id="hand-s"></div>
+            <div class="clock-center"></div>
+          </div>
+          <svg width="260" height="20" viewBox="0 0 260 20" style="display:block;margin:10px auto 0;position:relative;z-index:0">
+            <ellipse cx="50" cy="14" rx="20" ry="6" fill="#1A1A2E" stroke="rgba(212,175,55,.3)" stroke-width="1.2" transform="rotate(-15,50,14)"/>
+            <ellipse cx="210" cy="14" rx="20" ry="6" fill="#1A1A2E" stroke="rgba(212,175,55,.3)" stroke-width="1.2" transform="rotate(15,210,14)"/>
+          </svg>
+        </div>
+        <div class="clock-time-display">
+          <div class="big-time" id="modal-live-time">--:-- --</div>
+          <span class="big-label">Current Time</span>
+        </div>
+        <div class="event-time-row">
+          <div class="etime-pill"><div class="et-val">4:00 PM</div><div class="et-lbl">Doors Open</div></div>
+          <div class="etime-pill"><div class="et-val">4:30 PM</div><div class="et-lbl">Programme Start</div></div>
+          <div class="etime-pill"><div class="et-val">12:00 AM</div><div class="et-lbl">Event End</div></div>
+        </div>
+      </div>
+    </div>
+    <div class="gold-bar bot"></div>
+  </div>
+</div>
+
+<!-- MAP MODAL -->
+<div class="modal-overlay" id="map-modal">
+  <div class="modal-box">
+    <button class="xbtn" onclick="closeModal('map-modal')"><i class="fas fa-times"></i></button>
+    <div class="gold-bar top"></div>
+    <div class="modal-inner">
+      <div class="modal-title">The Venue</div>
+      <div class="modal-sub">✦ Find Your Way ✦</div>
+      <div class="map-wrap">
+        <iframe
+          class="map-frame"
+          id="venue-map"
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3862.026340071354!2d121.47372527578621!3d15.780261484823937!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x33981c024b00e6a5%3A0x3f3948771a190e4e!2sPurok%2003%2C%20Brgy.%20Sta.%20Lucia%2C%20Maria%2C%20Aurora!5e0!3m2!1sen!2sph!4v1782878113308!5m2!1sen!2sph"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+      </div>
+      <div class="map-info-bar">
+        <div class="map-info-pill">
+          <i class="fas fa-map-pin"></i>
+          <div><div class="mil">Address</div><div class="miv">Purok 03, Brgy. Sta. Lucia, Maria, Aurora</div></div>
+        </div>
+        <div class="map-info-pill">
+          <i class="fas fa-clock"></i>
+          <div><div class="mil">Doors Open</div><div class="miv">4:00 PM · July 18, 2026</div></div>
+        </div>
+      </div>
+      <a class="navigate-btn" id="nav-btn" href="#" onclick="navigateToVenue(event)">
+        <i class="fas fa-location-arrow"></i>&nbsp; Navigate from My Location ✦
+      </a>
+    </div>
+    <div class="gold-bar bot"></div>
+  </div>
+</div>
+
+<!-- PROGRAMME MODAL -->
+<div class="modal-overlay" id="prog-modal">
+  <div class="modal-box">
+    <button class="xbtn" onclick="closeModal('prog-modal')"><i class="fas fa-times"></i></button>
+    <div class="gold-bar top"></div>
+    <div class="modal-inner">
+      <div class="modal-title">The Programme</div>
+      <div class="modal-sub">✦ A Night to Remember ✦</div>
+      <div class="prog-timeline">
+        <div class="prog-item"><div class="prog-dot"></div><div class="prog-content"><div class="prog-time">4:00 PM</div><div class="prog-event">Doors Open &amp; Guest Arrival</div><div class="prog-note">Welcome drinks &amp; photo opportunities</div></div></div>
+        <div class="prog-item"><div class="prog-dot active"></div><div class="prog-content"><div class="prog-time">4:30 PM</div><div class="prog-event">Programme Begins</div><div class="prog-note">Opening &amp; welcome remarks</div></div></div>
+        <div class="prog-item"><div class="prog-dot"></div><div class="prog-content"><div class="prog-time">5:00 PM</div><div class="prog-event">18 Roses Ceremony</div><div class="prog-note">18 special gentlemen present roses to the debutante</div></div></div>
+        <div class="prog-item"><div class="prog-dot"></div><div class="prog-content"><div class="prog-time">5:30 PM</div><div class="prog-event">18 Blue Bills &amp; Treasures</div><div class="prog-note">Gifts of love &amp; blessings from loved ones</div></div></div>
+        <div class="prog-item"><div class="prog-dot"></div><div class="prog-content"><div class="prog-time">6:00 PM</div><div class="prog-event">18 Candles &amp; Letters</div><div class="prog-note">Heartfelt messages illuminated by candlelight</div></div></div>
+        <div class="prog-item"><div class="prog-dot"></div><div class="prog-content"><div class="prog-time">6:30 PM</div><div class="prog-event">18 Makeups, Shots &amp; Gifts</div><div class="prog-note">Beauty, celebration, &amp; tokens of affection</div></div></div>
+        <div class="prog-item"><div class="prog-dot"></div><div class="prog-content"><div class="prog-time">7:00 PM</div><div class="prog-event">Cotillion de Honor</div><div class="prog-note">Grand waltz with the royal court</div></div></div>
+        <div class="prog-item"><div class="prog-dot"></div><div class="prog-content"><div class="prog-time">8:00 PM</div><div class="prog-event">Dinner is Served</div><div class="prog-note">Feast &amp; merriment with family &amp; friends</div></div></div>
+        <div class="prog-item"><div class="prog-dot active"></div><div class="prog-content"><div class="prog-time">9:00 PM</div><div class="prog-event">Dancing &amp; Entertainment</div><div class="prog-note">Live performances, dancing &amp; surprises</div></div></div>
+        <div class="prog-item"><div class="prog-dot"></div><div class="prog-content"><div class="prog-time">12:00 AM</div><div class="prog-event">End of Celebration</div><div class="prog-note">Thank you for making this night magical ✦</div></div></div>
+      </div>
+    </div>
+    <div class="gold-bar bot"></div>
+  </div>
+</div>
+
+<!-- DRESS CODE MODAL -->
+<div class="modal-overlay" id="dress-modal">
+  <div class="modal-box">
+    <button class="xbtn" onclick="closeModal('dress-modal')"><i class="fas fa-times"></i></button>
+    <div class="gold-bar top"></div>
+    <div class="modal-inner">
+      <div class="modal-title">Dress Code</div>
+      <div class="modal-sub">✦ Formal · Purple &amp; Black ✦</div>
+      <div style="text-align:center">
+        <p style="font-family:'Playfair Display',serif;font-size:14px;color:var(--lavender);line-height:1.8;margin-bottom:20px">
+          Come dressed in your most elegant attire in the evening palette of <strong style="color:var(--gold2)">purple &amp; black</strong>.
+          Think fairytale royalty — ball gowns, formal suits, and everything in between.
+          Let the night remember you.
+        </p>
+        <div class="dress-mod-grid">
+          <div class="dress-mod-card">
+            <div class="dmi"><i class="fas fa-female"></i></div>
+            <div class="dml">Ladies</div>
+            <div class="dmv">Ball gowns · Formal dresses · Evening wear in purple, lavender, or black</div>
+          </div>
+          <div class="dress-mod-card">
+            <div class="dmi"><i class="fas fa-male"></i></div>
+            <div class="dml">Gentlemen</div>
+            <div class="dmv">Formal suits · Barong Tagalog · Dark tones with purple accents</div>
+          </div>
+        </div>
+        <div class="dc-swatches" style="cursor:default">
+          <div class="swatch-block"><div class="swatch" style="background:#4B0082"></div><div class="swatch-name">Royal Violet</div></div>
+          <div class="swatch-block"><div class="swatch" style="background:#7B2FBE"></div><div class="swatch-name">Amethyst</div></div>
+          <div class="swatch-block"><div class="swatch" style="background:#C8A4D4"></div><div class="swatch-name">Lavender</div></div>
+          <div class="swatch-block"><div class="swatch" style="background:#111;border:1px solid #333"></div><div class="swatch-name">Onyx Black</div></div>
+        </div>
+        <div class="dress-mod-note">
+          <p>✦ IMPORTANT NOTE ✦</p>
+          <p>Please avoid wearing white or pink as these are reserved for the debutante and her royal court.</p>
+        </div>
+      </div>
+    </div>
+    <div class="gold-bar bot"></div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script>
+const sf=document.getElementById('stars');
+const sp=document.getElementById('sparkles');
+const isMobile = window.innerWidth <= 680;
+const STAR_COUNT = isMobile ? 28 : 120;
+const SPARKLE_COUNT = isMobile ? 6 : 32;
+for(let i=0;i<STAR_COUNT;i++){
+  const s=document.createElement('div');s.className='star';
+  const z=Math.random()*2.5+.4;
+  s.style.cssText=`width:${z}px;height:${z}px;top:${Math.random()*100}%;left:${Math.random()*100}%;animation-duration:${Math.random()*5+2}s;animation-delay:${Math.random()*7}s`;
+  sf.appendChild(s);
+}
+for(let i=0;i<SPARKLE_COUNT;i++){
+  const el=document.createElement('div');el.className='sparkle';
+  const sz=Math.random()*5+3;
+  el.style.cssText=`width:${sz}px;height:${sz}px;left:${Math.random()*100}%;animation-duration:${Math.random()*14+8}s;animation-delay:${Math.random()*16}s`;
+  sp.appendChild(el);
+}
+
+function tick(){
+  const t=new Date('2026-07-18T16:30:00+08:00'),n=new Date();
+  let d=Math.max(0,t-n);
+  const days=Math.floor(d/864e5);d%=864e5;
+  const hrs=Math.floor(d/36e5);d%=36e5;
+  const min=Math.floor(d/6e4);d%=6e4;
+  const sec=Math.floor(d/1e3);
+  document.getElementById('cd-d').textContent=String(days).padStart(2,'0');
+  document.getElementById('cd-h').textContent=String(hrs).padStart(2,'0');
+  document.getElementById('cd-m').textContent=String(min).padStart(2,'0');
+  document.getElementById('cd-s').textContent=String(sec).padStart(2,'0');
+
+  const ccD=document.getElementById('cc-d');
+  if(ccD){
+    ccD.textContent=String(days).padStart(2,'0');
+    document.getElementById('cc-h').textContent=String(hrs).padStart(2,'0');
+    document.getElementById('cc-m').textContent=String(min).padStart(2,'0');
+    document.getElementById('cc-s').textContent=String(sec).padStart(2,'0');
+  }
+}
+tick();setInterval(tick,1000);
+
+function updateClock(){
+  const now=new Date();
+  const h=now.getHours()%12,m=now.getMinutes(),s=now.getSeconds(),ms=now.getMilliseconds();
+  const sDeg=(s+(ms/1000))*6;
+  const mDeg=(m+(s+(ms/1000))/60)*6;
+  const hDeg=(h+(m+(s+(ms/1000))/60)/60)*30;
+  const handS=document.getElementById('hand-s'),handM=document.getElementById('hand-m'),handH=document.getElementById('hand-h');
+  if(handS){
+    handS.style.transform=`rotate(${sDeg}deg)`;
+    handM.style.transform=`rotate(${mDeg}deg)`;
+    handH.style.transform=`rotate(${hDeg}deg)`;
+    const ampm=now.getHours()<12?'AM':'PM';
+    const hh=now.getHours()%12||12;
+    document.getElementById('modal-live-time').textContent=`${String(hh).padStart(2,'0')}:${String(m).padStart(2,'0')} ${ampm}`;
+  }
+}
+updateClock();setInterval(updateClock,1000);
+
+function navigateToVenue(e){
+  e.preventDefault();
+  const dest='15.7802615,121.4752942';
+  if(navigator.geolocation){
+    navigator.geolocation.getCurrentPosition(pos=>{
+      const lat=pos.coords.latitude,lng=pos.coords.longitude;
+      window.open(`https://www.google.com/maps/dir/${lat},${lng}/${dest}`,'_blank');
+    },()=>{
+      window.open(`https://www.google.com/maps/dir//${dest}`,'_blank');
+    });
+  } else {
+    window.open(`https://www.google.com/maps/dir//${dest}`,'_blank');
+  }
+}
+
+function openModal(id){document.getElementById(id).classList.add('show')}
+function closeModal(id){document.getElementById(id).classList.remove('show')}
+document.querySelectorAll('.modal-overlay').forEach(m=>{
+  m.addEventListener('click',e=>{if(e.target===m)m.classList.remove('show')});
+});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')document.querySelectorAll('.modal-overlay.show').forEach(m=>m.classList.remove('show'))});
+
+function launchFairytale(){
+  const overlay=document.getElementById('fairytale-overlay');
+  const portal=document.getElementById('portal');
+  const glow=document.getElementById('portal-glow');
+  const flash=document.getElementById('flash');
+  const words=document.getElementById('magic-words');
+  overlay.classList.add('active');
+  const petalColors=['#D4AF37','#F5E070','#C8A4D4','#9B59B6','#E8D5F5','#FFB3D9','#FFF0F5','#B39DDB','#F8BBD9','#E1BEE7'];
+  for(let i=0;i<36;i++){
+    const p=document.createElement('div');p.className='petal';
+    const angle=(360/36)*i+(Math.random()*10-5);
+    const dist=180+Math.random()*180;
+    const delay=Math.random()*0.4;const dur=1.2+Math.random()*0.8;
+    const spin=90+Math.random()*270;const color=petalColors[i%petalColors.length];
+    const size=8+Math.random()*14;
+    p.style.cssText=`--rot:${angle}deg;--dist:-${dist}px;--dur:${dur}s;--delay:${delay}s;--spin:${spin}deg;width:${size}px;height:${size*2.2}px;background:${color};box-shadow:0 0 6px ${color}88;`;
+    overlay.appendChild(p);
+    requestAnimationFrame(()=>requestAnimationFrame(()=>p.classList.add('burst')));
+  }
+  const starColors=['#F5E070','#D4AF37','#C8A4D4','#fff','#FFB3D9','#E8D5F5'];
+  for(let i=0;i<50;i++){
+    const s=document.createElement('div');s.className='starburst';
+    const angle=Math.random()*360;const dist=80+Math.random()*280;
+    const tx=Math.cos(angle*Math.PI/180)*dist;const ty=Math.sin(angle*Math.PI/180)*dist;
+    const delay=Math.random()*0.6;const dur=0.9+Math.random()*0.8;
+    const sz=4+Math.random()*8;const color=starColors[Math.floor(Math.random()*starColors.length)];
+    s.style.cssText=`--tx:${tx}px;--ty:${ty}px;--dur:${dur}s;--delay:${delay}s;width:${sz}px;height:${sz}px;background:${color};box-shadow:0 0 ${sz*2}px ${color};`;
+    overlay.appendChild(s);
+    requestAnimationFrame(()=>requestAnimationFrame(()=>s.classList.add('burst')));
+  }
+  const dustColors=['#F5E070','#C8A4D4','#fff','#FFB3D9'];
+  for(let i=0;i<60;i++){
+    const fd=document.createElement('div');fd.className='fdust';
+    const angle=Math.random()*360;const dist=30+Math.random()*220;
+    const mx=Math.cos(angle*Math.PI/180)*dist;const my=Math.sin(angle*Math.PI/180)*dist;
+    const delay=Math.random()*1.2;const dur=1.5+Math.random()*1.5;
+    const sz=2+Math.random()*5;const color=dustColors[Math.floor(Math.random()*dustColors.length)];
+    fd.style.cssText=`left:50%;top:50%;--mx:${mx}px;--my:${my}px;--dur:${dur}s;--delay:${delay}s;width:${sz}px;height:${sz}px;background:${color};box-shadow:0 0 ${sz*3}px ${color};`;
+    overlay.appendChild(fd);
+  }
+  const ribbonColors=['#D4AF37','#9B59B6','#C8A4D4','#F5E070','#FFB3D9'];
+  for(let i=0;i<20;i++){
+    const r=document.createElement('div');r.className='ribbon';
+    const angle=(i/20)*360+Math.random()*18;
+    const twist=(Math.random()>0.5?1:-1)*(20+Math.random()*40);
+    const dist=150+Math.random()*200;
+    const delay=Math.random()*0.5;const dur=1.4+Math.random()*0.8;
+    const h=30+Math.random()*60;const color=ribbonColors[i%ribbonColors.length];
+    r.style.cssText=`--rot:${angle}deg;--twist:${twist}deg;--dist:-${dist}px;--dur:${dur}s;--delay:${delay}s;height:${h}px;background:linear-gradient(to bottom,${color},${color}88);`;
+    overlay.appendChild(r);
+    requestAnimationFrame(()=>requestAnimationFrame(()=>r.classList.add('burst')));
+  }
+  requestAnimationFrame(()=>requestAnimationFrame(()=>{
+    portal.classList.add('burst');glow.classList.add('burst');flash.classList.add('burst');words.classList.add('show');
+  }));
+  setTimeout(()=>{
+    overlay.classList.remove('active');
+    overlay.querySelectorAll('.petal,.starburst,.fdust,.ribbon').forEach(el=>el.remove());
+    portal.classList.remove('burst');glow.classList.remove('burst');flash.classList.remove('burst');words.classList.remove('show');
+  },3200);
+}
+
+let opened=false;
+function openEnvelope(){
+  if(opened)return;opened=true;
+  document.getElementById('env-container').classList.add('opened');
+  setTimeout(launchFairytale,500);
+  setTimeout(()=>document.getElementById('intro').classList.add('hide'),800);
+  setTimeout(()=>{document.body.style.overflowY='auto';document.body.style.overflowX='hidden';document.getElementById('site').classList.add('show');},1200);
+  const bgAudio=new Audio('assets/Tangled.mp3');
+  bgAudio.loop=true;bgAudio.volume=0.3;
+  bgAudio.play().catch(()=>{});
+}
+let currentCardImage = 0;
+const cardImages = ['assets/events/1.png'];
+function cardNav(direction) {
+  currentCardImage = (currentCardImage + direction + cardImages.length) % cardImages.length;
+  document.querySelector('.card-hero').src = cardImages[currentCardImage];
+  document.querySelector('.card-image-count').textContent = `${currentCardImage + 1} / ${cardImages.length}`;
+}
+function showCard(){document.getElementById('card-wrap').classList.add('show')}
+function closeCard(){document.getElementById('card-wrap').classList.remove('show')}
+function toggleGallery(){window.location.href='gallery.html'}
+
+function openFullscreen(imgSrc){
+  const viewer=document.getElementById('fullscreen-viewer');
+  const fullImg=document.getElementById('fullscreen-img');
+  fullImg.src=imgSrc;
+  viewer.classList.add('active');
+  document.body.style.overflow='hidden';
+}
+function closeFullscreen(){
+  const viewer=document.getElementById('fullscreen-viewer');
+  viewer.classList.remove('active');
+  document.body.style.overflowY='auto';
+  document.body.style.overflowX='hidden';
+}
+document.addEventListener('DOMContentLoaded',()=>{
+  document.querySelectorAll('.event-photo img').forEach(img=>{
+    img.addEventListener('click',(e)=>{e.stopPropagation();openFullscreen(img.src);});
+  });
+  document.querySelectorAll('.purple-magic-swiper .swiper-slide img').forEach(img=>{
+    img.addEventListener('click',(e)=>{e.stopPropagation();openFullscreen(img.src);});
+  });
+  document.getElementById('fullscreen-viewer').addEventListener('click',(e)=>{
+    if(e.target.id==='fullscreen-viewer') closeFullscreen();
+  });
+  document.getElementById('fullscreen-close').addEventListener('click',closeFullscreen);
+  document.addEventListener('keydown',(e)=>{ if(e.key==='Escape') closeFullscreen(); });
+
+  var swiper = new Swiper(".purple-magic-swiper", {
+    effect: "cards",
+    grabCursor: true,
+    loop: true,
+    spaceBetween: 40,
+    on: {
+      slideChange: function () {
+        const activeSlide = this.slides[this.activeIndex];
+        if(!activeSlide) return;
+        
+        const title = activeSlide.getAttribute('data-title');
+        const desc = activeSlide.getAttribute('data-desc');
+        
+        const titleEl = document.getElementById('pm-title');
+        const descEl = document.getElementById('pm-desc');
+        
+        if(titleEl && descEl && title && desc) {
+          titleEl.style.animation = 'none';
+          descEl.style.animation = 'none';
+          titleEl.offsetHeight; // trigger reflow
+          titleEl.style.animation = 'fadeInUp 0.4s ease forwards';
+          descEl.style.animation = 'fadeInUp 0.5s ease forwards 0.1s';
+          
+          titleEl.textContent = title;
+          descEl.textContent = desc;
+        }
+      }
+    }
+  });
+
+  let eventsSwiperInst;
+  function initEventsSwiper() {
+    if (window.innerWidth <= 680 && !eventsSwiperInst) {
+      eventsSwiperInst = new Swiper('.events-swiper', {
+        // Use single-slide view on small screens for reliable centering
+        slidesPerView: 1,
+        centeredSlides: true,
+        slideToClickedSlide: true,
+        spaceBetween: 16,
+        speed: 260,
+        navigation: {
+          nextEl: '.events-next',
+          prevEl: '.events-prev',
+        }
+      });
+    } else if (window.innerWidth > 680 && eventsSwiperInst) {
+      eventsSwiperInst.destroy(true, true);
+      eventsSwiperInst = null;
+    }
+  }
+  window.addEventListener('resize', initEventsSwiper);
+  initEventsSwiper();
+});
+
+</script>
+
+<div id="fullscreen-viewer">
+  <img id="fullscreen-img" src="">
+  <button id="fullscreen-close">&times;</button>
+</div>
+
+</body>
+</html>
+</html>
